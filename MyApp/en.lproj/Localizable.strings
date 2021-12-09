@@ -1,0 +1,81 @@
+/* 
+  Localizable.strings
+  MyApp
+
+  Created by Amal on 05/05/1443 AH.
+  
+*/
+
+"SIGN IN" = "SIGN IN";
+"email" = "Email";
+"password" = "Password";
+"Log In" = "Sing in";
+"Sign up" = "Sign up";
+"Don't have account?" = "Don't have account? Sign up";
+"first" = "first name";
+"last" = "last name";
+"did you have account?" = "did you have account?";
+"Aseer" = "Aseer";
+"Albaha" = "Albaha";
+"Jazan" = "Jazan";
+"Najran" = "Najran";
+"services" = "Services Type";
+"Blood donation" = "Blood donation";
+"Patient facilities" = "Patient facilities" ;
+
+"Name" = "Name";
+"National Identity" = "National Identity";
+"blood type" = "blood type";
+"Telephone number" = "Telephone number";
+"Search" = "Search";
+"new donor" = "new donor";
+"Donor's name" = "Donor's name";
+"NDonor" = "National Identification";
+"phDonor" = "Mobile number";
+"TDonor" = "blood type";
+
+"Donorname" = "Enter Donor's name";
+"National" = "Enter National Identification Number";
+"Mobile number" = "Enter Mobile number";
+"blood" = "Enter blood type";
+"Add" = "Add";
+"b" = "What blood type do you give?";
+"Hospital" = "Hospital";
+"Aseer central hospital" = "Aseer central hospital";
+"King faisal" = "King faisal medical city";
+"Uhud Rafidah" = "Uhud Rafidah General Hospital";
+"Mustasharak Hospital" = "Mustasharak Hospital";
+"German Hospital" = "German Hospital";
+"Saudi Specialist" = "Saudi Specialist Medical Center";
+"Khamis Mushait" = "Khamis Mushait General Hospital";
+"Mahayel" = "Mahayel Aseer Hospital";
+
+"age" = "age";
+"vname" = "volunteer name";
+"vn" = "National Identification";
+"vnum" = "Mobile number";
+
+
+"volunteer" = "new volunteer";
+"volunteer name" = "Enter volunteer name";
+"National" = "Enter National Identification";
+"Mobile number" = "Enter Mobile number";
+"age" = "Enter age";
+"i" = "
+: a +
+  This type can be transferred to blood types A positive, or blood types AB positive.
+: a-
+ It can be transfused to anyone with blood type A or AB.
+: b +
+Blood of this type can be donated to anyone with blood type B positive or AB positive.
+: b -
+  This blood type can be transfused to anyone with blood type B or AB.
+: AB +
+ A person with this type can take blood or plasma from another type, so a person with type AB is known as a generic receiver.
+: AB-
+  This blood type can be transfused to anyone with blood type AB negative, and only AB positive.
+: C+
+ Positive: It can be transfused to anyone with a positive blood type.
+: C-
+  It can be transfused to any other blood type, so a person with that type is known as a generic donor.
+";
