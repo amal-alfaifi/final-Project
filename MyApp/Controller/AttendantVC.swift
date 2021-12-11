@@ -59,7 +59,7 @@ class AttendantVC : UIViewController {
                 return
             }
             
-            attendantsCV.register(DonorsCell.self, forCellWithReuseIdentifier: "cell")
+            attendantsCV.register(AttendantCell.self, forCellWithReuseIdentifier: "cellA")
             attendantsCV.dataSource = self
             attendantsCV.delegate = self
             attendantsCV.backgroundColor = UIColor (named: "Color")
@@ -104,17 +104,61 @@ class AttendantVC : UIViewController {
         
             func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
                 
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! DonorsCell
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellA", for: indexPath) as! AttendantCell
             
                 let atendant = attendant[indexPath.row]
                 
             cell.nameLabel.text = " الاسم:\(atendant.name)"
-                cell.bloodLabel.text = "العمر:\(atendant.age)"
+             cell.ageLabel.text = "العمر:\(atendant.age)"
             cell.idLabel.text = " الهويه الوطنيه:  \(atendant.id)"
             cell.numberLabel.text = "رقم الهاتف:  \(atendant.num)"
         
             return cell
         }
+        
+        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            let atendant = attendant[indexPath.row]
+            
+            let alertController = UIAlertController(title:"Ubdate & Delete", message:"ubdate your information", preferredStyle:.alert)
+            
+            let updateAction = UIAlertAction(title: "Update", style:.default){(_) in
+                
+                let id = atendant.id
+                let name =  alertController.textFields?[0].text
+                let age = alertController.textFields?[2].text
+                let num =  alertController.textFields?[3].text
+                AttendantService.shared.updateAttendant(
+                    attendants: AttendantModel(
+                        name: name!,
+                        id: id,
+                        age: age!,
+                        num: num!
+                        
+                    ))
+            }
+            let deleteAction = UIAlertAction(title: "Delete", style:.default){(_) in
+                
+                AttendantService.shared.deleteAttendant(attendantrId: atendant.id)
+            }
+            
+            alertController.addTextField{(textField) in
+                textField.text = atendant.name
+            }
+            alertController.addTextField{(textField) in
+                textField.text = atendant.id
+            }
+            alertController.addTextField{(textField) in
+                textField.text = atendant.age
+            }
+            alertController.addTextField{(textField) in
+                textField.text = atendant.num
+            }
+            
+            alertController.addAction(updateAction)
+            alertController.addAction (deleteAction)
+            present (alertController, animated:true, completion: nil)
+        
+            }
 
         func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
                 
@@ -129,8 +173,8 @@ class AttendantVC : UIViewController {
                 
             } else {
                 
-                attendant = attendant.filter({ oneProduct in
-                    return oneProduct.name.starts(with: searchText)
+                attendant = attendant.filter({ oneAttendant in
+                    return oneAttendant.name.starts(with: searchText)
                 })
             }
             attendantsCV?.reloadData()

@@ -36,9 +36,9 @@ class RegisterVC: UIViewController , UIImagePickerControllerDelegate, UINavigati
            return $0
        }(ViewController())
     
-    lazy var lastNameTF: ViewController = {
+    lazy var password2TF: ViewController = {
            $0.textFiled.placeholder = (NSLocalizedString("last", comment: ""))
-         $0.icon.image = UIImage(named: "birthday")
+         $0.icon.image = UIImage(named: "Confirm the password")
            return $0
        }(ViewController())
     
@@ -77,7 +77,7 @@ class RegisterVC: UIViewController , UIImagePickerControllerDelegate, UINavigati
         stackView.addArrangedSubview(nameTF)
         stackView.addArrangedSubview(emailTF)
         stackView.addArrangedSubview(passwordTF)
-        stackView.addArrangedSubview(lastNameTF)
+        stackView.addArrangedSubview(password2TF)
  
         NSLayoutConstraint.activate([
         
@@ -93,7 +93,7 @@ class RegisterVC: UIViewController , UIImagePickerControllerDelegate, UINavigati
             self.emailTF.heightAnchor.constraint(equalToConstant: 50),
             self.passwordTF.heightAnchor.constraint(equalToConstant: 50),
             self.emailTF.heightAnchor.constraint(equalToConstant: 50),
-            self.lastNameTF.heightAnchor.constraint(equalToConstant: 50),
+            self.password2TF.heightAnchor.constraint(equalToConstant: 50),
             
             
             self.singUpBtn.topAnchor.constraint(equalTo: self.stackView.bottomAnchor, constant: 30),
@@ -124,10 +124,10 @@ class RegisterVC: UIViewController , UIImagePickerControllerDelegate, UINavigati
         let email = emailTF.textFiled.text ?? ""
         let password = passwordTF.textFiled.text ?? ""
         let firstNam = nameTF.textFiled.text ?? ""
-        let lastNam = lastNameTF.textFiled.text ?? ""
+        let password2 = password2TF.textFiled.text ?? ""
         let uuid = UUID().uuidString
         
-        if email.isEmpty || password.isEmpty || firstNam.isEmpty || lastNam.isEmpty {
+        if email.isEmpty || password.isEmpty || firstNam.isEmpty || password2.isEmpty {
             return
         }
         Auth.auth().createUser(withEmail: email, password: password) { result, error in

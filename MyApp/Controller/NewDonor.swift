@@ -9,7 +9,6 @@ import UIKit
 import FirebaseFirestore
 
 class NewDonor: UIViewController, UITextFieldDelegate {
-    var a: DonorsModel?
     
     lazy var infoBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "info.circle")?.withRenderingMode(.alwaysOriginal), style: .done, target: self, action: #selector(infoButtomItemTapped))
     
@@ -207,7 +206,7 @@ class NewDonor: UIViewController, UITextFieldDelegate {
         let num = mtbr3NumTF.text ?? ""
         let bloodType = bloodTF.text ?? ""
 
-        DonorsService.shared.addH(doners: DonorsModel(name: name, id: id, bloodType:bloodType , num: num))
+        DonorsService.shared.addDonor(doners: DonorsModel(name: name, id: id, bloodType:bloodType , num: num))
      dismiss(animated: true, completion: nil)
 
         }

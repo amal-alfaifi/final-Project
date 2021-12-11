@@ -7,7 +7,7 @@
 import UIKit
 class DonorsCell: UICollectionViewCell {
     
-    static let identifire = "Cell"
+    static let identifire = "donorCell"
     
     public let nameLabel: UILabel = {
         let label = UILabel()

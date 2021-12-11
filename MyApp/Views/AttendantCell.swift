@@ -8,7 +8,7 @@
 import UIKit
 class AttendantCell: UICollectionViewCell {
     
-    static let identifire = "Cell"
+    static let identifire = "AttendantCell"
     
     public let nameLabel: UILabel = {
         let label = UILabel()

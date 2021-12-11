@@ -46,4 +46,17 @@ class AttendantService {
             completion(attendants)
         }
     }
+    func deleteAttendant(attendantrId: String) {
+        attendantCollection.document(attendantrId).delete()
+    }
+    
+    func updateAttendant(attendants: AttendantModel) {
+        attendantCollection.document(attendants.id).setData([
+            "name": attendants.name,
+            "id": attendants.id,
+            "age": attendants.age,
+            "num": attendants.num
+        ], merge: true)
+    }
+
 }

@@ -9,7 +9,6 @@ import UIKit
 import FirebaseFirestore
 
 class NewAttendant: UIViewController, UITextFieldDelegate {
-//    var a: DonorsModel?
     
     lazy var attendantNameTF: UITextField = {
         let tf = UITextField()
@@ -113,7 +112,6 @@ class NewAttendant: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        setupGradientView()
         
         view.addSubview(LabelN)
         view.addSubview(LabelID)

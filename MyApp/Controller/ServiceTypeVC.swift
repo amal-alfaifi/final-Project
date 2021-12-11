@@ -8,10 +8,7 @@
 import UIKit
 
 class ServiceTypeVC: UIViewController {
-    
-    
-    
-    
+   
 lazy var bloodButton: UIButton = {
     let btn = UIButton()
     btn.translatesAutoresizingMaskIntoConstraints = false
@@ -25,6 +22,19 @@ lazy var bloodButton: UIButton = {
     btn.titleLabel?.font = .systemFont(ofSize: 20, weight: .medium)
     return btn
 }()
+    lazy var organDonation: UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setTitleColor(UIColor(red: (76/255), green: (133/255), blue: (104/255), alpha: 1), for: .normal)
+        btn.backgroundColor = .systemGray5
+        btn.layer.borderColor = UIColor(red: (76/255), green: (133/255), blue: (104/255), alpha: 1).cgColor
+        btn.layer.borderWidth = 3
+        btn.layer.cornerRadius = 12
+        btn.addTarget(self, action: #selector(bloodButtonTapped), for: .touchUpInside)
+        btn.setTitle((NSLocalizedString("Organ donation", comment: "")), for: .normal)
+        btn.titleLabel?.font = .systemFont(ofSize: 20, weight: .medium)
+        return btn
+    }()
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -34,6 +44,14 @@ lazy var bloodButton: UIButton = {
         return imageView
     }()
     private let imageView2: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 22
+        imageView.image = UIImage(named: "h22")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    private let imageView3: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 22

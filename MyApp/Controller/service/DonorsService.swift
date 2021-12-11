@@ -14,7 +14,7 @@ class DonorsService {
 
     let DonersCollection = Firestore.firestore().collection("Doners")
 
-    func addH(doners: DonorsModel) {
+    func addDonor(doners: DonorsModel) {
         DonersCollection.document(doners.id).setData([
             "name": doners.name,
             "id": doners.id,
@@ -45,6 +45,19 @@ class DonorsService {
             }
             completion(donors)
         }
+    }
+    
+    func deleteDonor(donorId: String) {
+        DonersCollection.document(donorId).delete()
+    }
+    
+    func updateDonor(doners: DonorsModel) {
+        DonersCollection.document(doners.id).setData([
+            "name": doners.name,
+            "id": doners.id,
+            "blood": doners.bloodType,
+            "num": doners.num
+        ], merge: true)
     }
 
 }

@@ -88,7 +88,7 @@ class DonorsVC : UIViewController {
             navigationController?.pushViewController(vc, animated: true)
         }
     }
-    var selectedIndex = -1
+//    var selectedIndex = -1
 
     extension DonorsVC: UICollectionViewDelegate  , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate  {
         
@@ -112,6 +112,51 @@ class DonorsVC : UIViewController {
                 cell.bloodLabel.text = NSLocalizedString("blood type : \(donorss.bloodType)", comment: "")
             return cell
         }
+        
+        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            let donorss = donors[indexPath.row]
+            
+            let alertController = UIAlertController(title:"Ubdate", message:"ubdate your information", preferredStyle:.alert)
+            
+            let updateAction = UIAlertAction(title: "Update", style:.default){(_) in
+                
+                let id = donorss.id
+                let name =  alertController.textFields?[0].text
+                let bloodType = alertController.textFields?[2].text
+                let num =  alertController.textFields?[3].text
+                DonorsService.shared.updateDonor(
+                    doners: DonorsModel(
+                        name: name!,
+                        id: id,
+                        bloodType: bloodType!,
+                        num: num!
+                        
+                    ))
+            }
+            let deleteAction = UIAlertAction(title: "Delete", style:.default){(_) in
+                
+                DonorsService.shared.deleteDonor(donorId: donorss.id)
+            }
+            
+            alertController.addTextField{(textField) in
+                textField.text = donorss.name
+            }
+            alertController.addTextField{(textField) in
+                textField.text = donorss.id
+            }
+            alertController.addTextField{(textField) in
+                textField.text = donorss.bloodType
+            }
+            alertController.addTextField{(textField) in
+                textField.text = donorss.num
+            }
+            
+            alertController.addAction(updateAction)
+            alertController.addAction (deleteAction)
+            present (alertController, animated:true, completion: nil)
+        
+            }
+        
 
         func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
                 
@@ -126,8 +171,8 @@ class DonorsVC : UIViewController {
                 
             } else {
                 
-                donors = donors.filter({ oneProduct in
-                    return oneProduct.bloodType.starts(with: searchText)
+                donors = donors.filter({ oneAttendant in
+                    return oneAttendant.bloodType.starts(with: searchText)
                 })
             }
             donorsCV?.reloadData()
