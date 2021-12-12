@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 class MapVC: UIViewController {
-    
+
         let mapView : MKMapView = {
             let map = MKMapView()
             map.overrideUserInterfaceStyle = .light

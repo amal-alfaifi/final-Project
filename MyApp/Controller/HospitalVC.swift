@@ -9,8 +9,8 @@ import Foundation
 
 
 import UIKit
-class HospitalVC: UIViewController {
 
+class HospitalVC: UIViewController {
     lazy var hospitalTV : UITableView = {
         let hospitalTV = UITableView()
         hospitalTV.register(UITableViewCell.self, forCellReuseIdentifier: "hospitalCell")
@@ -33,6 +33,13 @@ class HospitalVC: UIViewController {
             hospitalTV.rightAnchor.constraint(equalTo: view.rightAnchor),
             hospitalTV.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+        let tap = UISwipeGestureRecognizer(
+                target: self,
+                action: #selector(hospitalLocation)
+        )
+        tap.direction = .right
+        view.addGestureRecognizer(tap)
+        view.isUserInteractionEnabled = true
     }
 
 }
@@ -51,6 +58,12 @@ extension HospitalVC : UITableViewDelegate, UITableViewDataSource{
         cell.backgroundColor = UIColor (named: "Color-1")
         return cell
     }
+    @objc func hospitalLocation() {
+        var vc = MapVC()
+        vc.modalPresentationStyle = .fullScreen
+        vc.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(vc, animated: true)
+              }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80

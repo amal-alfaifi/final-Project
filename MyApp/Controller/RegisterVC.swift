@@ -25,20 +25,22 @@ class RegisterVC: UIViewController , UIImagePickerControllerDelegate, UINavigati
     }(ViewController())
 
     lazy var emailTF:ViewController = {
-           $0.textFiled.placeholder = (NSLocalizedString("email", comment: ""))
-         $0.icon.image = UIImage(named: "email")
-           return $0
+        $0.textFiled.placeholder = (NSLocalizedString("email", comment: ""))
+        $0.icon.image = UIImage(named: "email")
+        return $0
        }(ViewController())
     
     lazy var passwordTF: ViewController = {
-           $0.textFiled.placeholder = (NSLocalizedString("password", comment: ""))
-         $0.icon.image = UIImage(named: "password")
+        $0.textFiled.placeholder = (NSLocalizedString("password", comment: ""))
+        $0.icon.image = UIImage(named: "password")
+        $0.textFiled.isSecureTextEntry = true
            return $0
        }(ViewController())
     
     lazy var password2TF: ViewController = {
-           $0.textFiled.placeholder = (NSLocalizedString("last", comment: ""))
-         $0.icon.image = UIImage(named: "Confirm the password")
+        $0.textFiled.placeholder = (NSLocalizedString("last", comment: ""))
+        $0.icon.image = UIImage(named: "password")
+        $0.textFiled.isSecureTextEntry = true
            return $0
        }(ViewController())
     

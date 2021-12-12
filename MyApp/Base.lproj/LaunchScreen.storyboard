@@ -16,30 +16,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ataa" translatesAutoresizingMaskIntoConstraints="NO" id="jeX-OP-Zdl">
-                                <rect key="frame" x="0.0" y="157" width="414" height="358"/>
-                                <color key="tintColor" red="0.2470588088" green="0.25098040700000002" blue="0.25098040700000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </imageView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="XTH-YE-9DM">
-                                <rect key="frame" x="190" y="516" width="37" height="37"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z78-sF-gNo">
+                                <rect key="frame" x="20" y="180" width="374" height="447"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="3jY-NA-1ss"/>
-                                    <constraint firstAttribute="width" constant="37" id="p9J-8l-rRZ"/>
+                                    <constraint firstAttribute="width" constant="374" id="IPa-M1-mBf"/>
+                                    <constraint firstAttribute="height" constant="447" id="lLf-Va-eua"/>
                                 </constraints>
-                                <color key="color" systemColor="secondaryLabelColor"/>
-                            </activityIndicatorView>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="XTH-YE-9DM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="190" id="I6R-Pg-9KS"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="XTH-YE-9DM" secondAttribute="bottom" constant="309" id="OpH-vM-kLf"/>
-                            <constraint firstItem="jeX-OP-Zdl" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="SCO-2u-LBL"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="jeX-OP-Zdl" secondAttribute="bottom" constant="347" id="T3v-pI-aoe"/>
-                            <constraint firstItem="XTH-YE-9DM" firstAttribute="top" secondItem="jeX-OP-Zdl" secondAttribute="bottom" constant="1" id="eCb-4k-wEz"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XTH-YE-9DM" secondAttribute="trailing" constant="187" id="jVu-XE-QSN"/>
-                            <constraint firstItem="jeX-OP-Zdl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="113" id="mLW-Xx-RMl"/>
-                            <constraint firstItem="jeX-OP-Zdl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pYH-cC-kIQ"/>
+                            <constraint firstItem="Z78-sF-gNo" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="31x-iw-MYH"/>
+                            <constraint firstItem="Z78-sF-gNo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="136" id="cBD-gX-egB"/>
+                            <constraint firstItem="Z78-sF-gNo" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailingMargin" id="iBx-0o-xR0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Z78-sF-gNo" secondAttribute="bottom" constant="235" id="jWX-2o-JOx"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -49,10 +41,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Ataa" width="1125" height="592"/>
-        <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

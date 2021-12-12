@@ -10,6 +10,8 @@ class AttendantCell: UICollectionViewCell {
     
     static let identifire = "AttendantCell"
     
+    fileprivate let application = UIApplication.shared
+    
     public let nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
@@ -108,14 +110,15 @@ class AttendantCell: UICollectionViewCell {
 
     }
     @objc  func callNumber() {
-        if let url = URL(string: "tel://\(numberLabel)") {
-             UIApplication.shared.openURL(url)
-         }
-            guard let url = URL(string: "tel://\(numberLabel)"),
-            UIApplication.shared.canOpenURL(url) else {
-                    return
-                }
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        if let phoneURL = URL(string: "tel://Call Number") {
+            if application.canOpenURL(phoneURL){
+               application.open(phoneURL, options: [:], completionHandler: nil)
+
+            } else {
+                
+            }
+
+}
 
 }
 }

@@ -30,7 +30,7 @@ lazy var bloodButton: UIButton = {
         btn.layer.borderColor = UIColor(red: (76/255), green: (133/255), blue: (104/255), alpha: 1).cgColor
         btn.layer.borderWidth = 3
         btn.layer.cornerRadius = 12
-        btn.addTarget(self, action: #selector(bloodButtonTapped), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(organDonationTapped), for: .touchUpInside)
         btn.setTitle((NSLocalizedString("Organ donation", comment: "")), for: .normal)
         btn.titleLabel?.font = .systemFont(ofSize: 20, weight: .medium)
         return btn
@@ -55,7 +55,7 @@ lazy var bloodButton: UIButton = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 22
-        imageView.image = UIImage(named: "h22")
+        imageView.image = UIImage(named: "p")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -82,7 +82,7 @@ override func viewDidLoad() {
     view.addSubview(bloodButton)
     NSLayoutConstraint.activate([
         bloodButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40),
-        bloodButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 200),
+        bloodButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
         bloodButton.widthAnchor.constraint(equalToConstant: 300),
         bloodButton.heightAnchor.constraint(equalToConstant: 200),
     ])
@@ -90,22 +90,37 @@ override func viewDidLoad() {
     view.addSubview(imageView)
     NSLayoutConstraint.activate([
         imageView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -55),
-        imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 255),
+        imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 155),
         imageView.widthAnchor.constraint(equalToConstant: 100),
         imageView.heightAnchor.constraint(equalToConstant: 100),
+    ])
+    view.addSubview(organDonation)
+    NSLayoutConstraint.activate([
+        organDonation.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40),
+        organDonation.topAnchor.constraint(equalTo: bloodButton.bottomAnchor, constant: 20),
+        organDonation.widthAnchor.constraint(equalToConstant: 300),
+        organDonation.heightAnchor.constraint(equalToConstant: 200),
+    ])
+    
+    view.addSubview(imageView3)
+    NSLayoutConstraint.activate([
+        imageView3.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -42),
+        imageView3.topAnchor.constraint(equalTo: bloodButton.bottomAnchor, constant: 80),
+        imageView3.widthAnchor.constraint(equalToConstant: 100),
+        imageView3.heightAnchor.constraint(equalToConstant: 100),
     ])
     
     view.addSubview(attendantButton)
     NSLayoutConstraint.activate([
         attendantButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40),
-        attendantButton.topAnchor.constraint(equalTo: bloodButton.bottomAnchor, constant: 16),
+        attendantButton.topAnchor.constraint(equalTo: organDonation.bottomAnchor, constant: 20),
         attendantButton.widthAnchor.constraint(equalToConstant: 300),
         attendantButton.heightAnchor.constraint(equalToConstant: 200),
     ])
     view.addSubview(imageView2)
     NSLayoutConstraint.activate([
-        imageView2.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -55),
-        imageView2.topAnchor.constraint(equalTo: bloodButton.bottomAnchor, constant: 55),
+        imageView2.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -42),
+        imageView2.topAnchor.constraint(equalTo: organDonation.bottomAnchor, constant: 60),
         imageView2.widthAnchor.constraint(equalToConstant: 100),
         imageView2.heightAnchor.constraint(equalToConstant:100),
     ])
@@ -122,6 +137,13 @@ override func viewDidLoad() {
     
     @objc private func attendantButtonTapped() {
         let vc = HospitalVC()
+
+        vc.navigationItem.largeTitleDisplayMode = .never
+        vc.modalPresentationStyle = .fullScreen
+        navigationController?.pushViewController(vc, animated: true)
+        }
+    @objc private func organDonationTapped() {
+        let vc = OrganDonationVC()
 
         vc.navigationItem.largeTitleDisplayMode = .never
         vc.modalPresentationStyle = .fullScreen

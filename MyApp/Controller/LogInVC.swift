@@ -38,6 +38,7 @@ class LogInVC: UIViewController {
     lazy var passwordTextFiled : ViewController  = {
         $0.textFiled.placeholder  = (NSLocalizedString("password", comment: ""))
         $0.icon.image = UIImage(named: "password")
+        $0.textFiled.isSecureTextEntry = true 
         return $0
     }(ViewController())
     

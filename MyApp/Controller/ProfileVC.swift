@@ -16,7 +16,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
     lazy var singOut: UIButton = {
         let singOut = UIButton()
         singOut.addTarget(self, action: #selector(singOutButton), for: .touchUpInside)
-        singOut.setTitle("Sign out", for: .normal)
+        singOut.setTitle((NSLocalizedString("Sign out", comment: "")), for: .normal)
         singOut.setTitleColor(UIColor(red: (76/255), green: (133/255), blue: (104/255), alpha: 1), for: .normal)
         singOut.layer.borderColor = UIColor.gray.cgColor
         singOut.layer.borderWidth = 2
@@ -24,6 +24,24 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
         singOut.translatesAutoresizingMaskIntoConstraints = false
         return singOut
     }()
+    lazy var changeBtn: UIButton = {
+            let b = UIButton()
+        b.addTarget(self, action: #selector(change), for: .touchUpInside)
+        b.translatesAutoresizingMaskIntoConstraints = false
+        b.layer.cornerRadius = 5
+        b.backgroundColor = .systemGray5
+        b.setImage(UIImage(systemName: "dot.circle.and.hand.point.up.left.fill"), for: .normal)
+        b.tintColor = UIColor(red: (76/255), green: (133/255), blue: (104/255), alpha: 1)
+        b.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
+            return b
+        }()
+    lazy var changelabel: UILabel = {
+            let l = UILabel()
+        l.translatesAutoresizingMaskIntoConstraints = false
+        l.textAlignment = .right
+        l.text = (NSLocalizedString("change languge", comment: ""))
+            return l
+        }()
     
     lazy var profileImage: UIImageView = {
        let pI = UIImageView()
@@ -50,7 +68,6 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.layer.cornerRadius = 12
         tf.layer.borderWidth = 1
-        tf.text = users?.name
         tf.layer.borderColor = UIColor.white.cgColor
         return tf
     }()
@@ -64,7 +81,6 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
 
 
   override func viewDidLoad() {
-      super.viewDidLoad()
 
       view.backgroundColor = .white
 
@@ -94,6 +110,21 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
         nameP.widthAnchor.constraint(equalToConstant: 220),
         nameP.heightAnchor.constraint(equalToConstant: 50),
       ])
+      view.addSubview(changelabel)
+      NSLayoutConstraint.activate([
+        changelabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant:-10),
+        changelabel.topAnchor.constraint(equalTo: greenImage.bottomAnchor, constant: 10),
+        changelabel.widthAnchor.constraint(equalToConstant: 200),
+        changelabel.heightAnchor.constraint(equalToConstant: 60),
+      ])
+      view.addSubview(changeBtn)
+      NSLayoutConstraint.activate([
+        changeBtn.rightAnchor.constraint(equalTo: changelabel.leftAnchor, constant:-100),
+        changeBtn.topAnchor.constraint(equalTo: greenImage.bottomAnchor, constant: 30),
+        changeBtn.widthAnchor.constraint(equalToConstant: 60),
+        changeBtn.heightAnchor.constraint(equalToConstant: 20),
+      ])
+      
 
       view.addSubview(singOut)
       NSLayoutConstraint.activate([
@@ -113,6 +144,17 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
         print("Image tapped")
         present(imagePicker, animated: true)
     }
+    @objc func change() {
+        guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                return
+              }
+              if UIApplication.shared.canOpenURL(settingsUrl) {
+                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                  print("Settings opened: \(success)") 
+                })
+              }
+          }
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.editedImage] ?? info [.originalImage] as? UIImage
         profileImage.image = image as? UIImage

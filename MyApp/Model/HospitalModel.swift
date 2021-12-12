@@ -11,13 +11,15 @@ class HospitalModel {
     var name : String
     var id : String
     var image : String
+    
     init(name:String , id:String,image:String){
         self.name = name
         self.id = id
         self.image = image
     }
 }
-let hospital = [HospitalModel(name:(NSLocalizedString( "Aseer central hospital", comment: "")), id: "1", image: "Aseer"),
+let hospital = [
+    HospitalModel(name:(NSLocalizedString( "Aseer central hospital", comment: "")), id: "1", image: "Aseer"),
                 
                 HospitalModel(name:(NSLocalizedString( "King faisal", comment: "")), id: "2", image: "faisal"),
                 

@@ -11,6 +11,7 @@ class DonorsVC : UIViewController {
     
     var donors: Array<DonorsModel> = []
     
+
         lazy var searchBar:UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 280,height: 15))
 
         private var donorsCV: UICollectionView?
@@ -103,15 +104,14 @@ class DonorsVC : UIViewController {
             func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
                 
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! DonorsCell
-            
                 let donorss = donors[indexPath.row]
                 
                 cell.nameLabel.text = NSLocalizedString("Name: \(donorss.name)", comment: "")
-            cell.idLabel.text = NSLocalizedString("National Identity: \(donorss.id)", comment: "")
-            cell.numberLabel.text = NSLocalizedString("Telephone number: \(donorss.num)", comment: "")
+                cell.idLabel.text = NSLocalizedString("National Identity: \(donorss.id)", comment: "")
+                cell.numberLabel.text = NSLocalizedString("Telephone number: \(donorss.num)", comment: "")
                 cell.bloodLabel.text = NSLocalizedString("blood type : \(donorss.bloodType)", comment: "")
-            return cell
-        }
+                return cell
+            }
         
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             let donorss = donors[indexPath.row]

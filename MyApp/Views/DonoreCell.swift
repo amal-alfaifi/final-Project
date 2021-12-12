@@ -9,6 +9,8 @@ class DonorsCell: UICollectionViewCell {
     
     static let identifire = "donorCell"
     
+    fileprivate let application = UIApplication.shared
+    
     public let nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
@@ -100,14 +102,15 @@ class DonorsCell: UICollectionViewCell {
 
     }
     @objc  func callNumber() {
-        if let url = URL(string: "tel://\(numberLabel)") {
-             UIApplication.shared.openURL(url)
-         }
-            guard let url = URL(string: "tel://\(numberLabel)"),
-            UIApplication.shared.canOpenURL(url) else {
-                    return
-                }
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        var v : DonorsModel!
+        if let phoneURL = URL(string: "tel://\(v.num)") {
+            if application.canOpenURL(phoneURL){
+               application.open(phoneURL, options: [:], completionHandler: nil)
 
+            } else {
+                
+            }
+
+}
 }
 }

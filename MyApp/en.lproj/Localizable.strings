@@ -13,7 +13,7 @@
 "Sign up" = "Sign up";
 "Don't have account?" = "Don't have account? Sign up";
 "first" = "first name";
-"last" = "last name";
+"last" = "confirm password";
 "did you have account?" = "did you have account?";
 "Aseer" = "Aseer";
 "Albaha" = "Albaha";
@@ -79,3 +79,12 @@ Blood of this type can be donated to anyone with blood type B positive or AB pos
 : C-
   It can be transfused to any other blood type, so a person with that type is known as a generic donor.
 ";
+
+"change languge" = "change languge";
+"Sign out" = "Sign out";
+"Organ donation" = "Organ donation";
+"name" = "Enter Full Name";
+"The college" = "The college";
+"the heart" = "the heart";
+"the bones" = "the bones";
+"the lung" = "the lung";
