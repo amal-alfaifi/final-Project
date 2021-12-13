@@ -70,13 +70,13 @@ class LogInVC: UIViewController {
         //MARK: step 3
         NSLayoutConstraint.activate([
             //***
-            self.titlelbl.topAnchor.constraint(equalTo:self.view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            self.titlelbl.topAnchor.constraint(equalTo:self.view.safeAreaLayoutGuide.topAnchor, constant: 40),
             self.titlelbl.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             
 
             //***
             self.stack.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            self.stack.topAnchor.constraint(equalTo: self.titlelbl.bottomAnchor, constant: 40),
+            self.stack.topAnchor.constraint(equalTo: self.titlelbl.bottomAnchor, constant: 150),
             self.stack.widthAnchor.constraint(equalTo: self.view.widthAnchor, constant: -100),
 
             //singInBtn btn

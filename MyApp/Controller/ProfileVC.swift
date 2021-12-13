@@ -9,9 +9,11 @@ import UIKit
 import FirebaseFirestore
 import FirebaseAuth
 
+var user: User?
 class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigationControllerDelegate {
-
-    var users: User?
+    let db = Firestore.firestore()
+    var users: Array<User> = []
+    
 
     lazy var singOut: UIButton = {
         let singOut = UIButton()
@@ -63,12 +65,14 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
        return iP
    }()
 
-    lazy var nameP : UITextField = {
-        let tf = UITextField()
+    lazy var nameP : UILabel = {
+        let tf = UILabel()
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.layer.cornerRadius = 12
         tf.layer.borderWidth = 1
         tf.layer.borderColor = UIColor.white.cgColor
+        tf.textColor = .red
+//        tf.text = "ggg"
         return tf
     }()
     lazy var greenImage: UIImageView = {
@@ -87,7 +91,11 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
       let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
        profileImage.addGestureRecognizer(tapRecognizer)
       
-    
+//      nameP.text = user?.name
+//      RegisterService.shared.listenToUsers{ newd in
+//          self.users = newd
+//      }
+      
       view.addSubview(greenImage)
       NSLayoutConstraint.activate([
         greenImage.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -0),
@@ -133,8 +141,19 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
         singOut.widthAnchor.constraint(equalToConstant: 200),
         singOut.heightAnchor.constraint(equalToConstant: 50),
       ])
+      fetchCurrentUsers() 
+//      guard let currentUserID = Auth.auth().currentUser?.uid else {return}
+//          Firestore.firestore()
+//            .document("users/\(currentUserID)")
+//            .addSnapshotListener{ doucument, error in
+//              if error != nil {
+//                print (error)
+//                return
+//              }
+//              self.nameP.text = doucument?.data()?["name"] as? String
+//            }
+      }
 
-  }
     @objc func singOutButton() {
         let vc = LogInVC()
         vc.modalPresentationStyle = .fullScreen
@@ -160,4 +179,34 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
         profileImage.image = image as? UIImage
         dismiss(animated: true)
     }
+    
+    private func fetchCurrentUsers() {
+        guard let currentUserName = FirebaseAuth.Auth.auth().currentUser else {return}
+        db.collection("users").whereField("userEmail", isEqualTo: String(currentUserName.email!))
+            .addSnapshotListener { (querySnapshot, error) in
+                
+                if let e = error {
+                    print("There was an issue retrieving data from Firestore. \(e)")
+                } else {
+                    if let snapshotDocuments = querySnapshot?.documents {
+                        for doc in snapshotDocuments {
+                            let data = doc.data()
+                            if let userName = data["name"] as? String,
+//                               let userIsOnline = data["status"] as? String,
+                               let userEmail = data["email"] as? String
+                            {
+                                
+                                DispatchQueue.main.async {
+                                    self.nameP.text = userName
+//                                    self.userEmailLabel.text = userEmail
+    
+                                }
+                            }
+                        }
+                    }
+                }
+        }
+    }
 }
+
+

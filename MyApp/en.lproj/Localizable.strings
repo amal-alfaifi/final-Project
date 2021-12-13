@@ -15,10 +15,10 @@
 "first" = "first name";
 "last" = "confirm password";
 "did you have account?" = "did you have account?";
-"Aseer" = "Aseer";
-"Albaha" = "Albaha";
-"Jazan" = "Jazan";
-"Najran" = "Najran";
+"Abha" = "Abha";
+"kh" = "Khamis Mushait";
+"u" = "Uhud rafidah";
+"m" = "Mahayel aseer";
 "services" = "Services Type";
 "Blood donation" = "Blood donation";
 "Patient facilities" = "Patient facilities" ;
@@ -29,10 +29,13 @@
 "Telephone number" = "Telephone number";
 "Search" = "Search";
 "new donor" = "new donor";
-"Donor's name" = "Donor's name";
+"Donor's name" = "Enter Donor's name";
+"dddo" = "Donor's name";
 "NDonor" = "National Identification";
 "phDonor" = "Mobile number";
 "TDonor" = "blood type";
+"sd" = "The Gender";
+"bd" = "The Birthday";
 
 "Donorname" = "Enter Donor's name";
 "National" = "Enter National Identification Number";
@@ -88,3 +91,6 @@ Blood of this type can be donated to anyone with blood type B positive or AB pos
 "the heart" = "the heart";
 "the bones" = "the bones";
 "the lung" = "the lung";
+"the g" = "Enter your gender";
+"bir" = "Enter your birthday";
+"Policy and Terms" = "Policy and Terms";

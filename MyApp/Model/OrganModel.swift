@@ -8,7 +8,7 @@
 struct OrganModel {
     var name : String
     var id : String
-    var sex : String
+    var gender : String
     var birthday : String
 }
 

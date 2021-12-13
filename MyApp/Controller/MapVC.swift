@@ -15,17 +15,26 @@ class MapVC: UIViewController {
             map.translatesAutoresizingMaskIntoConstraints = false
             return map
         }()
+    func configureMap() {
+         let center = CLLocationCoordinate2D(latitude: 18.222302509549063, longitude: 42.51460111562375)
+         let span = MKCoordinateSpan(latitudeDelta: 0.125, longitudeDelta: 0.125)
+         let region = MKCoordinateRegion(center: center, span: span)
+        mapView.setRegion(region, animated: true)
+        self.annotationLocations
+       }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
-                view.addSubview(mapView)
+         view.addSubview(mapView)
         NSLayoutConstraint.activate([
             mapView.topAnchor.constraint(equalTo: self.view.topAnchor),
             mapView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             mapView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             mapView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         ])
+        configureMap()
         
         createAnnotations(locations: annotationLocations)
     }
@@ -48,5 +57,6 @@ class MapVC: UIViewController {
             longitude: location["longitude"] as! CLLocationDegrees)
             mapView.addAnnotation(annotations)
         }
+        
     }
          }

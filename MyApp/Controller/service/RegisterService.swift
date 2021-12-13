@@ -19,6 +19,7 @@ class RegisterService {
         usersCollection.document(user.id).setData([
             "name": user.name,
             "id": user.id,
+            "userEmail": user.userEmail
 
         ])
     }
@@ -36,7 +37,8 @@ class RegisterService {
                 let data = document.data()
                 let user = User(
                     name: (data["name"] as? String) ?? "No name",
-                    id: (data["id"] as? String) ?? "No id"
+                    id: (data["id"] as? String) ?? "No id",
+                    userEmail: (data["email"] as? String) ?? "No email"
                 )
                 users.append(user)
             }
@@ -48,6 +50,7 @@ class RegisterService {
         usersCollection.document(user.id).setData([
             "id": user.id,
             "name": user.name,
+            "userEmail": user.userEmail
         ], merge: true)
     }
 

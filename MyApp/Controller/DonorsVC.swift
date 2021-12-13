@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import ContactsUI
 
-class DonorsVC : UIViewController {
+class DonorsVC : UIViewController, CNContactViewControllerDelegate {
     
     var donors: Array<DonorsModel> = []
     
@@ -137,6 +138,11 @@ class DonorsVC : UIViewController {
                 
                 DonorsService.shared.deleteDonor(donorId: donorss.id)
             }
+            let callAction = UIAlertAction(title: "Call", style:.default){(_) in
+                let controller = CNContactViewController(forNewContact: nil)
+                controller.delegate = self
+                self.navigationController?.pushViewController(controller, animated: true)
+            }
             
             alertController.addTextField{(textField) in
                 textField.text = donorss.name
@@ -151,11 +157,17 @@ class DonorsVC : UIViewController {
                 textField.text = donorss.num
             }
             
+            alertController.addAction(callAction)
             alertController.addAction(updateAction)
             alertController.addAction (deleteAction)
             present (alertController, animated:true, completion: nil)
         
             }
+        func contactViewController(_ viewController: CNContactViewController, didCompleteWith contact: CNContact?) {
+            if contact == nil {
+                navigationController?.popViewController(animated: true)
+            }
+        }
         
 
         func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

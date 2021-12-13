@@ -8,4 +8,5 @@
 struct User {
   let name: String
   let id: String
+  let userEmail: String
 }

@@ -19,7 +19,7 @@ class OrganDonationService {
         oDCollection.document(od.id).setData([
             "name": od.name,
             "id": od.id,
-            "sex": od.sex,
+            "gender": od.gender,
             "birthday": od.birthday,
         ])
     }
@@ -39,7 +39,7 @@ class OrganDonationService {
                 let organ = OrganModel(
                     name: (data["name"] as? String) ?? "No name",
                     id: (data["id"] as? String) ?? "No id",
-                    sex: (data["sex"] as? String) ?? "Nothing",
+                    gender: (data["gender"] as? String) ?? "Nothing",
                     birthday: (data["birthday"] as? String) ?? "Nothing"
                 )
                 org.append(organ)

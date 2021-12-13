@@ -14,19 +14,6 @@ class OrganDonationVC : UIViewController {
     
     private var odCV: UICollectionView?
     
-    lazy var AddButton: UIButton = {
-        let b = UIButton()
-        b.addTarget(self, action: #selector(AddDonor), for: .touchUpInside)
-        b.translatesAutoresizingMaskIntoConstraints = false
-        b.setTitle(NSLocalizedString("new donor", comment: ""), for: .normal)
-        b.layer.cornerRadius = 25
-        b.setTitleColor(UIColor(red: (76/255), green: (133/255), blue: (104/255), alpha: 1), for: .normal)
-        b.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
-        b.backgroundColor = .systemGray5
-        return b
-    }()
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,21 +42,6 @@ class OrganDonationVC : UIViewController {
         view.addSubview(odCV)
         odCV.frame = view.bounds
         
-        
-        view.addSubview(AddButton)
-        NSLayoutConstraint.activate([
-            AddButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -80),
-            AddButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 80),
-            AddButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
-            AddButton.widthAnchor.constraint(equalToConstant: 400),
-            AddButton.heightAnchor.constraint(equalToConstant: 60),
-        ])
-    }
-    
-    @objc func AddDonor() {
-        let vc = NewDonor()
-        vc.navigationItem.largeTitleDisplayMode = .never
-        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -89,8 +61,8 @@ extension OrganDonationVC: UICollectionViewDelegate  , UICollectionViewDataSourc
         let orgDonation = organ[indexPath.row]
         cell.nameLabel.text = "Name: \(orgDonation.name)"
         cell.idLabel.text = "National Identity: \(orgDonation.id)"
-        cell.sexLabel.text = "The sex : \(orgDonation.sex)"
-        cell.birthdayLabel.text = "The sex : \(orgDonation.birthday)"
+        cell.sexLabel.text = "The gender : \(orgDonation.gender)"
+        cell.birthdayLabel.text = "birthday : \(orgDonation.birthday)"
         return cell
     }
     
@@ -126,13 +98,13 @@ extension OrganDonationVC: UICollectionViewDelegate  , UICollectionViewDataSourc
             
             let id = orgDonation.id
             let name =  alertController.textFields?[0].text
-            let sex = orgDonation.sex
+            let gender = orgDonation.gender
             let birthday = orgDonation.birthday
             OrganDonationService.shared.updatevolunteer(
                 volunteers: OrganModel(
                     name: name!,
                     id: id,
-                    sex: sex,
+                    gender: gender,
                     birthday: birthday
                     
                 ))

@@ -106,8 +106,6 @@ class NewAttendant: UIViewController, UITextFieldDelegate {
         let age = ageTF.text ?? ""
 
         AttendantService.shared.addAttendant(attendant: AttendantModel(name: name, id: id, age:age , num: num))
-     dismiss(animated: true, completion: nil)
-
         }
 
     override func viewDidLoad() {

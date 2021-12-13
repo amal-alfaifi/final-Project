@@ -5,7 +5,9 @@
 //  Created by Amal on 02/05/1443 AH.
 //
 import UIKit
-class DonorsCell: UICollectionViewCell {
+import ContactsUI
+
+class DonorsCell: UICollectionViewCell, CNContactViewControllerDelegate {
     
     static let identifire = "donorCell"
     
@@ -42,10 +44,9 @@ class DonorsCell: UICollectionViewCell {
         label.font = UIFont(name: "Avenir-Light", size: 18)
         return label
     }()
-    public let phoneBtn: UIButton = {
-        let btn = UIButton()
-        btn.addTarget(self, action: #selector(callNumber), for: .touchUpInside)
-        btn.setImage(UIImage(systemName: "phone"), for: .normal)
+    public let phoneBtn: UIImageView = {
+        let btn = UIImageView()
+        btn.image = UIImage(named: "pppp")
         return btn
     }()
  
@@ -90,10 +91,10 @@ class DonorsCell: UICollectionViewCell {
                               width: 300,
                               height: contentView.frame.size.height-30)
         
-        phoneBtn.frame = CGRect(x: 10,
-                              y: 90,
-                              width: 20,
-                              height: contentView.frame.size.height-30)
+        phoneBtn.frame = CGRect(x: 300,
+                              y: 20,
+                              width: 50,
+                              height: contentView.frame.size.height-150)
       
         bloodLabel.frame = CGRect(x: 50,
                               y: 50,
@@ -101,16 +102,4 @@ class DonorsCell: UICollectionViewCell {
                               height: contentView.frame.size.height-30)
 
     }
-    @objc  func callNumber() {
-        var v : DonorsModel!
-        if let phoneURL = URL(string: "tel://\(v.num)") {
-            if application.canOpenURL(phoneURL){
-               application.open(phoneURL, options: [:], completionHandler: nil)
-
-            } else {
-                
-            }
-
-}
-}
 }

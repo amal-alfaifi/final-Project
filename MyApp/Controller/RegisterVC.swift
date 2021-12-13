@@ -119,17 +119,16 @@ class RegisterVC: UIViewController , UIImagePickerControllerDelegate, UINavigati
         let VC = TabVC()
         VC.modalPresentationStyle = .fullScreen
         dismiss(animated: true, completion: nil)
-          print("move")
-      
     }
+    
     @objc func startSignUp() {
         let email = emailTF.textFiled.text ?? ""
         let password = passwordTF.textFiled.text ?? ""
-        let firstNam = nameTF.textFiled.text ?? ""
+        let name = nameTF.textFiled.text ?? ""
         let password2 = password2TF.textFiled.text ?? ""
         let uuid = UUID().uuidString
         
-        if email.isEmpty || password.isEmpty || firstNam.isEmpty || password2.isEmpty {
+        if email.isEmpty || password.isEmpty || name.isEmpty || password2.isEmpty {
             return
         }
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
@@ -140,8 +139,11 @@ class RegisterVC: UIViewController , UIImagePickerControllerDelegate, UINavigati
         }
         
         RegisterService.shared.addUser(
-            user: User(name: firstNam, id: uuid)
+            user: User(name: name, id: uuid, userEmail: email)
         )
+        let vc = TabVC()
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
     }
     
  

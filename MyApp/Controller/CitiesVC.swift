@@ -17,13 +17,13 @@ class CitiesVC: UIViewController {
         btn.layer.cornerRadius = 40
         btn.layer.borderColor = UIColor(red: (76/255), green: (133/255), blue: (104/255), alpha: 1).cgColor
         btn.layer.borderWidth = 3
-        btn.setTitle((NSLocalizedString("Aseer", comment: "")), for: .normal)
+        btn.setTitle((NSLocalizedString("Abha", comment: "")), for: .normal)
         btn.layer.masksToBounds = true
         btn.addTarget(self, action: #selector(cityButtonTapped), for: .touchUpInside)
         btn.titleLabel?.font = .systemFont(ofSize: 25, weight: .bold)
         return btn
     }()
-    lazy var albahaButton: UIButton = {
+    lazy var khamisButton: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.setTitleColor(UIColor(red: (76/255), green: (133/255), blue: (104/255), alpha: 1), for: .normal)
@@ -31,13 +31,13 @@ class CitiesVC: UIViewController {
         btn.layer.borderColor = UIColor(red: (76/255), green: (133/255), blue: (104/255), alpha: 1).cgColor
         btn.layer.borderWidth = 3
         btn.layer.cornerRadius = 40
-        btn.setTitle((NSLocalizedString("Albaha", comment: "")), for: .normal)
+        btn.setTitle((NSLocalizedString("kh", comment: "")), for: .normal)
         btn.layer.masksToBounds = true
         btn.addTarget(self, action: #selector(cityButtonTapped), for: .touchUpInside)
         btn.titleLabel?.font = .systemFont(ofSize: 25, weight: .bold)
         return btn
     }()
-    lazy var jazanButton: UIButton = {
+    lazy var uhodButton: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.setTitleColor(UIColor(red: (76/255), green: (133/255), blue: (104/255), alpha: 1), for: .normal)
@@ -45,13 +45,13 @@ class CitiesVC: UIViewController {
         btn.layer.borderColor = UIColor(red: (76/255), green: (133/255), blue: (104/255), alpha: 1).cgColor
         btn.layer.borderWidth = 3
         btn.layer.cornerRadius = 40
-        btn.setTitle((NSLocalizedString("Jazan", comment: "")), for: .normal)
+        btn.setTitle((NSLocalizedString("u", comment: "")), for: .normal)
         btn.layer.masksToBounds = true
         btn.addTarget(self, action: #selector(cityButtonTapped), for: .touchUpInside)
         btn.titleLabel?.font = .systemFont(ofSize: 25, weight: .bold)
         return btn
     }()
-    lazy var najranButton: UIButton = {
+    lazy var mahayalButton: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.setTitleColor(UIColor(red: (76/255), green: (133/255), blue: (104/255), alpha: 1), for: .normal)
@@ -59,7 +59,7 @@ class CitiesVC: UIViewController {
         btn.layer.borderColor = UIColor(red: (76/255), green: (133/255), blue: (104/255), alpha: 1).cgColor
         btn.layer.borderWidth = 3
         btn.layer.cornerRadius = 40
-        btn.setTitle((NSLocalizedString("Najran", comment: "")), for: .normal)
+        btn.setTitle((NSLocalizedString("m", comment: "")), for: .normal)
         btn.layer.masksToBounds = true
         btn.addTarget(self, action: #selector(cityButtonTapped), for: .touchUpInside)
         btn.titleLabel?.font = .systemFont(ofSize: 25, weight: .bold)
@@ -82,29 +82,29 @@ class CitiesVC: UIViewController {
             asirButton.heightAnchor.constraint(equalToConstant: 70),
         ])
         
-        view.addSubview(albahaButton)
+        view.addSubview(khamisButton)
         NSLayoutConstraint.activate([
-            albahaButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50),
-            albahaButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50),
-            albahaButton.topAnchor.constraint(equalTo: asirButton.topAnchor, constant: 100),
-            albahaButton.widthAnchor.constraint(equalToConstant: 300),
-            albahaButton.heightAnchor.constraint(equalToConstant: 70),
+            khamisButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50),
+            khamisButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50),
+            khamisButton.topAnchor.constraint(equalTo: asirButton.topAnchor, constant: 100),
+            khamisButton.widthAnchor.constraint(equalToConstant: 300),
+            khamisButton.heightAnchor.constraint(equalToConstant: 70),
         ])
-        view.addSubview(jazanButton)
+        view.addSubview(uhodButton)
         NSLayoutConstraint.activate([
-            jazanButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50),
-            jazanButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50),
-            jazanButton.topAnchor.constraint(equalTo: albahaButton.topAnchor, constant: 100),
-            jazanButton.widthAnchor.constraint(equalToConstant: 300),
-            jazanButton.heightAnchor.constraint(equalToConstant: 70),
+            uhodButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50),
+            uhodButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50),
+            uhodButton.topAnchor.constraint(equalTo: khamisButton.topAnchor, constant: 100),
+            uhodButton.widthAnchor.constraint(equalToConstant: 300),
+            uhodButton.heightAnchor.constraint(equalToConstant: 70),
         ])
-        view.addSubview(najranButton)
+        view.addSubview(mahayalButton)
         NSLayoutConstraint.activate([
-            najranButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50),
-            najranButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50),
-            najranButton.topAnchor.constraint(equalTo: jazanButton.topAnchor, constant: 100),
-            najranButton.widthAnchor.constraint(equalToConstant: 300),
-            najranButton.heightAnchor.constraint(equalToConstant: 70),
+            mahayalButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50),
+            mahayalButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50),
+            mahayalButton.topAnchor.constraint(equalTo: uhodButton.topAnchor, constant: 100),
+            mahayalButton.widthAnchor.constraint(equalToConstant: 300),
+            mahayalButton.heightAnchor.constraint(equalToConstant: 70),
         ])
 
     }

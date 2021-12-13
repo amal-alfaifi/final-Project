@@ -7,15 +7,15 @@
 
 import Foundation
 import FirebaseFirestore
+import SafariServices
 
 class NewBenefactor: UIViewController, UITextFieldDelegate {
     
-    lazy var infoBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "info.circle")?.withRenderingMode(.alwaysOriginal), style: .done, target: self, action: #selector(infoButtomItemTapped))
-    
+
     lazy var odNameTF: UITextField = {
         let tf = UITextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
-        tf.placeholder = (NSLocalizedString("Donorname", comment: ""))
+        tf.placeholder = (NSLocalizedString("dddo", comment: ""))
         tf.backgroundColor = .systemGray5
         tf.layer.borderColor = UIColor.systemBlue.cgColor
         tf.textAlignment = .right
@@ -35,10 +35,10 @@ class NewBenefactor: UIViewController, UITextFieldDelegate {
         return tf
     }()
     
-    lazy var odSexTF: UITextField = {
+    lazy var genderTF: UITextField = {
         let tf = UITextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
-        tf.placeholder = (NSLocalizedString("Mobile number", comment: ""))
+        tf.placeholder = (NSLocalizedString("the g", comment: ""))
         tf.backgroundColor = .systemGray5
         tf.textAlignment = .right
         tf.delegate = self
@@ -48,7 +48,7 @@ class NewBenefactor: UIViewController, UITextFieldDelegate {
     lazy var birthTF: UITextField = {
         let tf = UITextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
-        tf.placeholder = (NSLocalizedString("blood", comment: ""))
+        tf.placeholder = (NSLocalizedString("bir", comment: ""))
         tf.backgroundColor = .systemGray5
         tf.textAlignment = .right
         tf.delegate = self
@@ -70,7 +70,7 @@ class NewBenefactor: UIViewController, UITextFieldDelegate {
     public let LabelN: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.text = (NSLocalizedString("Donor's name :", comment: ""))
+        label.text = (NSLocalizedString("dddo", comment: ""))
         label.font = .systemFont(ofSize: 18, weight: .bold)
         label.textAlignment = .right
         
@@ -85,11 +85,11 @@ class NewBenefactor: UIViewController, UITextFieldDelegate {
         
         return label
     }()
-    public let sexLabel: UILabel = {
+    public let genderLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18, weight: .bold)
         label.textColor = .white
-        label.text = (NSLocalizedString("phDonor" , comment: ""))
+        label.text = (NSLocalizedString("sd" , comment: ""))
         label.textAlignment = .right
         return label
     }()
@@ -97,50 +97,65 @@ class NewBenefactor: UIViewController, UITextFieldDelegate {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18, weight: .bold)
         label.textColor = .white
-        label.text = (NSLocalizedString("TDonor", comment: ""))
+        label.text = (NSLocalizedString("bd", comment: ""))
         label.textAlignment = .right
         return label
+    }()
+    
+    private let imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 22
+        imageView.image = UIImage(named: "zi1")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    lazy var patButton: UIButton = {
+        let b = UIButton()
+        b.addTarget(self, action: #selector(privacyPolicy), for: .touchUpInside)
+        b.translatesAutoresizingMaskIntoConstraints = false
+        b.setTitle((NSLocalizedString("Policy and Terms", comment: "")), for: .normal)
+        b.titleLabel?.font = UIFont(name: "Avenir-Light", size: 15.0)
+        b.setTitleColor(UIColor.blue, for: .normal)
+        return b
     }()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor (named: "Color-2")
-
-       navigationItem.setRightBarButton(infoBarButtonItem, animated: false)
-
-        
+  
         view.addSubview(addButton)
         view.addSubview(LabelN)
         view.addSubview(LabelID)
-        view.addSubview(sexLabel)
+        view.addSubview(genderLabel)
         view.addSubview(Labelbirthday)
  
-        LabelN.frame = CGRect(x: 155,
-                             y: 200,
-                             width: 200,
+        LabelN.frame = CGRect(x: 50,
+                             y: 110,
+                             width: 300,
                              height:130)
         
-        LabelID.frame = CGRect(x: 155,
-                             y: 300,
-                             width: 200,
+        LabelID.frame = CGRect(x: 50,
+                             y: 210,
+                             width: 300,
                              height:130)
         
-        sexLabel.frame = CGRect(x: 220,
-                             y: 410,
-                             width: 140,
+        genderLabel.frame = CGRect(x: 55,
+                             y: 320,
+                             width: 300,
                              height:130)
         
         Labelbirthday.frame = CGRect(x: 220,
-                            y: 520,
+                            y: 420,
                             width: 140,
                             height:130)
         
- 
+  
         view.addSubview(odNameTF)
         NSLayoutConstraint.activate([
             odNameTF.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            odNameTF.topAnchor.constraint(equalTo: view.topAnchor, constant: 290),
+            odNameTF.topAnchor.constraint(equalTo: view.topAnchor, constant: 200),
             odNameTF.heightAnchor.constraint(equalToConstant: 48),
             odNameTF.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -48)
         ])
@@ -152,19 +167,26 @@ class NewBenefactor: UIViewController, UITextFieldDelegate {
             odIdTF.heightAnchor.constraint(equalToConstant: 48),
             odIdTF.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -48)
         ])
-        view.addSubview(odSexTF)
+        view.addSubview(genderTF)
         NSLayoutConstraint.activate([
-            odSexTF.topAnchor.constraint(equalTo: odIdTF.bottomAnchor, constant: 60),
-            odSexTF.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            odSexTF.heightAnchor.constraint(equalToConstant: 48),
-            odSexTF.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -48)
+            genderTF.topAnchor.constraint(equalTo: odIdTF.bottomAnchor, constant: 60),
+            genderTF.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            genderTF.heightAnchor.constraint(equalToConstant: 48),
+            genderTF.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -48)
         ])
         view.addSubview(birthTF)
         NSLayoutConstraint.activate([
-            birthTF.topAnchor.constraint(equalTo: odSexTF.bottomAnchor, constant: 60),
+            birthTF.topAnchor.constraint(equalTo: genderTF.bottomAnchor, constant: 60),
             birthTF.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             birthTF.heightAnchor.constraint(equalToConstant: 48),
             birthTF.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -48)
+        ])
+        view.addSubview(patButton)
+        NSLayoutConstraint.activate([
+            patButton.topAnchor.constraint(equalTo: birthTF.bottomAnchor, constant: 10),
+            patButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 100),
+            patButton.heightAnchor.constraint(equalToConstant: 48),
+            patButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 10)
         ])
         
         NSLayoutConstraint.activate([
@@ -173,6 +195,15 @@ class NewBenefactor: UIViewController, UITextFieldDelegate {
             addButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
             addButton.widthAnchor.constraint(equalToConstant: 400),
             addButton.heightAnchor.constraint(equalToConstant: 60),
+        ])
+        
+        view.addSubview(imageView)
+        NSLayoutConstraint.activate([
+            imageView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -0),
+            imageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 70),
+            imageView.heightAnchor.constraint(equalToConstant: 100),
+            imageView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 100),
+            imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
         ])
     }
     
@@ -183,11 +214,11 @@ class NewBenefactor: UIViewController, UITextFieldDelegate {
     @objc func add() {
         let name = odNameTF.text ?? ""
         let id = odIdTF.text ?? ""
-        let sex = odSexTF.text ?? ""
+        let gender = genderTF.text ?? ""
         let birthday = birthTF.text ?? ""
 
-        OrganDonationService.shared.addvolunteer(od: OrganModel(name: name, id: id, sex: sex , birthday: birthday))
-     dismiss(animated: true, completion: nil)
+        OrganDonationService.shared.addvolunteer(od: OrganModel(name: name, id: id, gender: gender , birthday: birthday))
+
         
         }
     @objc func infoButtomItemTapped() {
@@ -196,5 +227,10 @@ class NewBenefactor: UIViewController, UITextFieldDelegate {
         navigationController?.pushViewController(vc, animated: true)
 
     }
+    @objc func privacyPolicy(_ sender: Any) {
+        let privacyURL = "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/4a16fbc8-7f1d-4647-8acc-ad0900d849c2/1"
+        let safariVC = SFSafariViewController(url: URL(string: privacyURL)!)
+        self.present(safariVC, animated: true)
+      }
 
 }
