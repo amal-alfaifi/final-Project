@@ -40,3 +40,7 @@ let hospital = [
                 HospitalModel(name: (NSLocalizedString( "German Hospital", comment: "")) , id: "5", image: "الماني"),
 
 ]
+
+let dictionary : [String: Int] = ["a" : 1 , "b" : 2 , "c" : 3]
+
+let s : Set = [1,2,3]

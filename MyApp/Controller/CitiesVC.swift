@@ -6,7 +6,9 @@
 //
 
 import UIKit
-
+protocol Cities {
+    
+}
 class CitiesVC: UIViewController {
 
     lazy var asirButton: UIButton = {
@@ -70,9 +72,7 @@ class CitiesVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor (named: "Color")
-//        view.setGradiantView()
         
-   
         view.addSubview(asirButton)
         NSLayoutConstraint.activate([
             asirButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50),

@@ -6,9 +6,13 @@
 //
 
 import UIKit
-class AttendantCell: UICollectionViewCell {
+import ContactsUI
+
+class AttendantCell: UICollectionViewCell, CNContactViewControllerDelegate {
     
     static let identifire = "AttendantCell"
+    
+    var myTabelViewController : AttendantVC?
     
     fileprivate let application = UIApplication.shared
     
@@ -52,8 +56,8 @@ class AttendantCell: UICollectionViewCell {
     }()
     public let phoneBtn: UIButton = {
         let btn = UIButton()
+        btn.setImage(UIImage(named: "pppp"), for: .normal)
         btn.addTarget(self, action: #selector(callNumber), for: .touchUpInside)
-        btn.setImage(UIImage(systemName: "phone"), for: .normal)
         return btn
     }()
  
@@ -98,10 +102,11 @@ class AttendantCell: UICollectionViewCell {
                               width: 300,
                               height: contentView.frame.size.height-30)
         
-        phoneBtn.frame = CGRect(x: -110,
-                              y: 90,
-                              width: 300,
-                              height: contentView.frame.size.height-30)
+        phoneBtn.frame = CGRect(x: 5,
+                              y: 1,
+                              width: 50,
+                              height: contentView.frame.size.height-150)
+      
       
         idLabel.frame = CGRect(x:  -155,
                               y: 50,
@@ -110,15 +115,9 @@ class AttendantCell: UICollectionViewCell {
 
     }
     @objc  func callNumber() {
-        if let phoneURL = URL(string: "tel://Call Number") {
-            if application.canOpenURL(phoneURL){
-               application.open(phoneURL, options: [:], completionHandler: nil)
-
-            } else {
-                
-            }
-
+            myTabelViewController?.CallCell(cell: self)
+            let controller = CNContactViewController(forNewContact: nil)
+            controller.delegate = self
+        }
 }
 
-}
-}

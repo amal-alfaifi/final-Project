@@ -31,10 +31,13 @@ class AnimationViewController: UIViewController {
     view.addSubview(animationView)
   }
     func handleAnimation() {
+        do {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             let loginView = LogInVC()
               self.navigationController?.pushViewController(loginView, animated: true)
           }
+        } catch let error {
+            print(error)
         }
-
+    }
 }

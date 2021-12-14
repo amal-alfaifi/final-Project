@@ -9,6 +9,7 @@ import Foundation
 import FirebaseFirestore
 import SafariServices
 
+var sender = false
 class NewBenefactor: UIViewController, UITextFieldDelegate {
     
 
@@ -58,7 +59,6 @@ class NewBenefactor: UIViewController, UITextFieldDelegate {
     
     lazy var addButton: UIButton = {
         let b = UIButton()
-        b.addTarget(self, action: #selector(add), for: .touchUpInside)
         b.translatesAutoresizingMaskIntoConstraints = false
         b.setTitle((NSLocalizedString("Add", comment: "")), for: .normal)
         b.titleLabel?.font = UIFont(name: "Avenir-Light", size: 27.0)
@@ -117,6 +117,13 @@ class NewBenefactor: UIViewController, UITextFieldDelegate {
         b.setTitle((NSLocalizedString("Policy and Terms", comment: "")), for: .normal)
         b.titleLabel?.font = UIFont(name: "Avenir-Light", size: 15.0)
         b.setTitleColor(UIColor.blue, for: .normal)
+        return b
+    }()
+    lazy var checkButton: UIButton = {
+        let b = UIButton()
+        b.addTarget(self, action: #selector(checkBoxTapped), for: .touchUpInside)
+        b.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
+        b.translatesAutoresizingMaskIntoConstraints = false
         return b
     }()
 
@@ -184,9 +191,16 @@ class NewBenefactor: UIViewController, UITextFieldDelegate {
         view.addSubview(patButton)
         NSLayoutConstraint.activate([
             patButton.topAnchor.constraint(equalTo: birthTF.bottomAnchor, constant: 10),
-            patButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 100),
-            patButton.heightAnchor.constraint(equalToConstant: 48),
-            patButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 10)
+            patButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10),
+            patButton.heightAnchor.constraint(equalToConstant: 40),
+            patButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -260)
+        ])
+        view.addSubview(checkButton)
+        NSLayoutConstraint.activate([
+            checkButton.topAnchor.constraint(equalTo: birthTF.bottomAnchor, constant: 7),
+            checkButton.rightAnchor.constraint(equalTo: patButton.leftAnchor, constant: 50),
+            checkButton.heightAnchor.constraint(equalToConstant: 48),
+            checkButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -270)
         ])
         
         NSLayoutConstraint.activate([
@@ -211,16 +225,24 @@ class NewBenefactor: UIViewController, UITextFieldDelegate {
         dismiss(animated: true, completion: nil)
         return true
     }
-    @objc func add() {
-        let name = odNameTF.text ?? ""
-        let id = odIdTF.text ?? ""
-        let gender = genderTF.text ?? ""
-        let birthday = birthTF.text ?? ""
+     func add() {
 
-        OrganDonationService.shared.addvolunteer(od: OrganModel(name: name, id: id, gender: gender , birthday: birthday))
+            let name = odNameTF.text ?? ""
+            let id = odIdTF.text ?? ""
+            let gender = genderTF.text ?? ""
+            let birthday = birthTF.text ?? ""
 
-        
+            OrganDonationService.shared.addvolunteer(od: OrganModel(name: name, id: id, gender: gender , birthday: birthday))
         }
+    func alertUserLoginError() {
+        let alert = UIAlertController(title: "Condition",
+                                      message: "You must agree to the terms.",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title:"Cancle",
+                                      style: .cancel, handler: nil))
+        present(alert, animated: true)
+    }
+
     @objc func infoButtomItemTapped() {
         let vc = InformationVC()
         vc.navigationItem.largeTitleDisplayMode = .never
@@ -232,5 +254,17 @@ class NewBenefactor: UIViewController, UITextFieldDelegate {
         let safariVC = SFSafariViewController(url: URL(string: privacyURL)!)
         self.present(safariVC, animated: true)
       }
+    @objc func checkBoxTapped(_ sender: UIButton) {
+        if sender.isSelected {
+           sender.isSelected = false
+           sender.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
+            self.add()
+        }
+         else {
+            sender.isSelected  = true
+            sender.setImage(UIImage(systemName: "squareshape"), for: .normal)
+            self.alertUserLoginError()
+        }
+    }
 
 }

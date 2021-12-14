@@ -30,12 +30,11 @@
 		C9A2FC29275F5840006EC903 /* AttendantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A2FC28275F5840006EC903 /* AttendantModel.swift */; };
 		C9A2FC2B275F6F44006EC903 /* AttendantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A2FC2A275F6F44006EC903 /* AttendantCell.swift */; };
 		C9A2FC2D275F703F006EC903 /* NewAttendant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A2FC2C275F703F006EC903 /* NewAttendant.swift */; };
-		C9A2FC2F275F7A8C006EC903 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A2FC2E275F7A8C006EC903 /* RegisterVC.swift */; };
 		C9A2FC31275F7B1F006EC903 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A2FC30275F7B1F006EC903 /* UserModel.swift */; };
-		C9A2FC33275F7B5F006EC903 /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A2FC32275F7B5F006EC903 /* RegisterService.swift */; };
 		C9A2FC352760A04F006EC903 /* InformationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A2FC342760A04F006EC903 /* InformationVC.swift */; };
 		C9A2FC372760ED7C006EC903 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A2FC362760ED7C006EC903 /* Color.swift */; };
 		C9A2FC392760FE15006EC903 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A2FC382760FE15006EC903 /* ViewController.swift */; };
+		C9CD50BA2768EB9B00658046 /* MapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CD50B92768EB9B00658046 /* MapService.swift */; };
 		C9E6B0A42766778F005628B2 /* NewBenefactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E6B0A32766778F005628B2 /* NewBenefactor.swift */; };
 		C9EE8E7D2765DB3C006712E4 /* 81548-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = C9EE8E7C2765DB3C006712E4 /* 81548-loading.json */; };
 		C9EE8E7F2765DD41006712E4 /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EE8E7E2765DD41006712E4 /* AnimationViewController.swift */; };
@@ -74,12 +73,11 @@
 		C9A2FC28275F5840006EC903 /* AttendantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendantModel.swift; sourceTree = "<group>"; };
 		C9A2FC2A275F6F44006EC903 /* AttendantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendantCell.swift; sourceTree = "<group>"; };
 		C9A2FC2C275F703F006EC903 /* NewAttendant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAttendant.swift; sourceTree = "<group>"; };
-		C9A2FC2E275F7A8C006EC903 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		C9A2FC30275F7B1F006EC903 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		C9A2FC32275F7B5F006EC903 /* RegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterService.swift; sourceTree = "<group>"; };
 		C9A2FC342760A04F006EC903 /* InformationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationVC.swift; sourceTree = "<group>"; };
 		C9A2FC362760ED7C006EC903 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		C9A2FC382760FE15006EC903 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C9CD50B92768EB9B00658046 /* MapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapService.swift; sourceTree = "<group>"; };
 		C9E6B0A32766778F005628B2 /* NewBenefactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBenefactor.swift; sourceTree = "<group>"; };
 		C9EE8E7C2765DB3C006712E4 /* 81548-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "81548-loading.json"; sourceTree = "<group>"; };
 		C9EE8E7E2765DD41006712E4 /* AnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
@@ -180,7 +178,6 @@
 				C9A2FC362760ED7C006EC903 /* Color.swift */,
 				C9A2FC382760FE15006EC903 /* ViewController.swift */,
 				C94DB9B5275E050B00EABA56 /* LogInVC.swift */,
-				C9A2FC2E275F7A8C006EC903 /* RegisterVC.swift */,
 				C94DB98F275D08C200EABA56 /* CitiesVC.swift */,
 				C94DB99F275D0BB800EABA56 /* ServiceTypeVC.swift */,
 				C94DB9A7275D196F00EABA56 /* DonorsVC.swift */,
@@ -204,8 +201,8 @@
 			children = (
 				C94DB9B1275DBAC300EABA56 /* DonorsService.swift */,
 				C9A2FC22275F3C67006EC903 /* AttendantService.swift */,
-				C9A2FC32275F7B5F006EC903 /* RegisterService.swift */,
 				C9EE8E8627666EE8006712E4 /* OrganDonationService.swift */,
+				C9CD50B92768EB9B00658046 /* MapService.swift */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -345,7 +342,6 @@
 				C9EE8E83276650C1006712E4 /* OrganModel.swift in Sources */,
 				C94DB9AC275D2CD000EABA56 /* NewDonor.swift in Sources */,
 				C9EE8E7F2765DD41006712E4 /* AnimationViewController.swift in Sources */,
-				C9A2FC33275F7B5F006EC903 /* RegisterService.swift in Sources */,
 				C9A2FC1D275E7E1E006EC903 /* DonoreCell.swift in Sources */,
 				C9A2FC23275F3C67006EC903 /* AttendantService.swift in Sources */,
 				C9A2FC31275F7B1F006EC903 /* UserModel.swift in Sources */,
@@ -358,11 +354,11 @@
 				C94DB990275D08C200EABA56 /* CitiesVC.swift in Sources */,
 				C94DB9B4275DEB1E00EABA56 /* TabVC.swift in Sources */,
 				C9A2FC372760ED7C006EC903 /* Color.swift in Sources */,
-				C9A2FC2F275F7A8C006EC903 /* RegisterVC.swift in Sources */,
 				C9A2FC352760A04F006EC903 /* InformationVC.swift in Sources */,
 				C94DB9AA275D2C2800EABA56 /* DonorsModel.swift in Sources */,
 				C9FB968E2761FC5900178446 /* MapVC.swift in Sources */,
 				C9A2FC392760FE15006EC903 /* ViewController.swift in Sources */,
+				C9CD50BA2768EB9B00658046 /* MapService.swift in Sources */,
 				C94DB98C275D08C200EABA56 /* AppDelegate.swift in Sources */,
 				C9A2FC25275F40AE006EC903 /* HospitalVC.swift in Sources */,
 				C94DB98E275D08C200EABA56 /* SceneDelegate.swift in Sources */,

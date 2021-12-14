@@ -9,8 +9,8 @@
 "SIGN IN" = "SIGN IN";
 "email" = "Email";
 "password" = "Password";
-"Log In" = "Sing in";
-"Sign up" = "Sign up";
+"Log In" = "Log in";
+"Sign up" = "Register";
 "Don't have account?" = "Don't have account? Sign up";
 "first" = "first name";
 "last" = "confirm password";
@@ -94,3 +94,5 @@ Blood of this type can be donated to anyone with blood type B positive or AB pos
 "the g" = "Enter your gender";
 "bir" = "Enter your birthday";
 "Policy and Terms" = "Policy and Terms";
+"nam1" = "Name";
+"Dark mode" = "Dark mode";

@@ -25,8 +25,6 @@ class ViewController : UIView {
     
     
     let textFiled : UITextField = {
-        
-        
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.tintColor = colors.titlesColor
         $0.textColor = colors.titlesColor
@@ -61,7 +59,6 @@ class ViewController : UIView {
             textFiled.rightAnchor.constraint(equalTo: self.rightAnchor),
             textFiled.leftAnchor.constraint(equalTo: self.leftAnchor),
             textFiled.heightAnchor.constraint(equalToConstant: 50),
-            
             
             self.icon.leftAnchor.constraint(equalTo: self.textFiled.leftAnchor,constant: 10),
             self.icon.heightAnchor.constraint(equalToConstant: 30),

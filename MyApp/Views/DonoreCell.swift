@@ -7,9 +7,12 @@
 import UIKit
 import ContactsUI
 
+
 class DonorsCell: UICollectionViewCell, CNContactViewControllerDelegate {
     
     static let identifire = "donorCell"
+    
+    var myTabelViewController : DonorsVC?
     
     fileprivate let application = UIApplication.shared
     
@@ -44,9 +47,10 @@ class DonorsCell: UICollectionViewCell, CNContactViewControllerDelegate {
         label.font = UIFont(name: "Avenir-Light", size: 18)
         return label
     }()
-    public let phoneBtn: UIImageView = {
-        let btn = UIImageView()
-        btn.image = UIImage(named: "pppp")
+    public let phoneBtn: UIButton = {
+        let btn = UIButton()
+        btn.setImage(UIImage(named: "pppp"), for: .normal)
+        btn.addTarget(self, action: #selector(Donornumber), for: .touchUpInside)
         return btn
     }()
  
@@ -91,8 +95,8 @@ class DonorsCell: UICollectionViewCell, CNContactViewControllerDelegate {
                               width: 300,
                               height: contentView.frame.size.height-30)
         
-        phoneBtn.frame = CGRect(x: 300,
-                              y: 20,
+        phoneBtn.frame = CGRect(x: 5,
+                              y: 1,
                               width: 50,
                               height: contentView.frame.size.height-150)
       
@@ -101,5 +105,11 @@ class DonorsCell: UICollectionViewCell, CNContactViewControllerDelegate {
                               width: 300,
                               height: contentView.frame.size.height-30)
 
+    }
+    @objc func Donornumber() {
+        myTabelViewController?.CallCell(cell: self)
+        let controller = CNContactViewController(forNewContact: nil)
+        controller.delegate = self
+//        self.navigationController?.showViewController(controller)
     }
 }

@@ -1,47 +1,50 @@
 //
-//  LogIn.swift
-//  MyApp
+//  Login.swift
+//  JetChat
 //
-//  Created by Amal on 02/05/1443 AH.
+//  Created by MacBook on 08/04/1443 AH.
 //
 
 import UIKit
+import Firebase
 import FirebaseAuth
 
 class LogInVC: UIViewController {
     
+    let db = Firestore.firestore()
     
-    //MARK: Step 1
-    lazy var titlelbl: UILabel = {
-        $0.changeUILabel(title: (NSLocalizedString("SIGN IN", comment: "")), size: 20)
-        return $0
-    }(UILabel())
+    lazy var greenImage: UIImageView = {
+      let gI = UIImageView()
+        gI.translatesAutoresizingMaskIntoConstraints = false
+        gI.image = UIImage(named: "a1t")
+      return gI
 
-    lazy var singInBtn : UIButton = {
-        $0.changeUIButton(title:(NSLocalizedString("Log In", comment: "")), color: colors.button)
-        $0.addTarget(self, action:#selector(tapToSignIn), for: .touchUpInside)
+    }()
+    lazy var nameTF : ViewController = {
+        $0.textFiled.text = "Amal".localized()
+        $0.textFiled.placeholder = (NSLocalizedString("name1", comment: "")).localized()
+        $0.icon.image   = UIImage(named: "user")
+        $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
-    }(UIButton(type: .system))
-    
-    lazy var signUpBtn : UIButton = {
-        $0.changeUIButton(title: (NSLocalizedString("Don't have account?", comment: "")), color: .clear)
-        $0.addTarget(self, action:#selector(didPresssignUpButton), for: .touchUpInside)
-        return $0
-    }(UIButton(type: .system))
-    
-    lazy var emailTextFiled :  ViewController = {
-        $0.textFiled.placeholder = (NSLocalizedString("email", comment: ""))
-        $0.icon.image = UIImage(named: "email")
+    }(ViewController())
+
+    lazy var emailTF : ViewController =  {
+        $0.textFiled.text = "Amal@gmail.com"
+        $0.textFiled.placeholder = (NSLocalizedString("email", comment: "")).localized()
+        $0.icon.image   = UIImage(named: "email")
+        $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(ViewController())
     
-    lazy var passwordTextFiled : ViewController  = {
-        $0.textFiled.placeholder  = (NSLocalizedString("password", comment: ""))
-        $0.icon.image = UIImage(named: "password")
-        $0.textFiled.isSecureTextEntry = true 
+    lazy var passTf : ViewController =  {
+        $0.textFiled.text = "123456"
+        $0.textFiled.placeholder = (NSLocalizedString("password", comment: "")).localized()
+        $0.textFiled.textAlignment = .center
+        $0.icon.image   = UIImage(named: "password")
+        $0.textFiled.translatesAutoresizingMaskIntoConstraints = false
+        $0.textFiled.isSecureTextEntry = true
         return $0
     }(ViewController())
-    
     
     lazy var stack : UIStackView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -51,90 +54,139 @@ class LogInVC: UIViewController {
         return $0
     }(UIStackView())
     
+    let registerBtn : UIButton = {
+        let registerBtn = UIButton()
+        registerBtn.backgroundColor = UIColor(red:0.58, green:0.26, blue:0.25, alpha:1.0)
+        registerBtn.setTitle((NSLocalizedString("Sign up", comment: "")).localized(), for: .normal)
+        registerBtn.translatesAutoresizingMaskIntoConstraints = false
+        registerBtn.layer.cornerRadius = 25
+        registerBtn.addTarget(self, action: #selector(loginRigs), for: .touchUpInside)
+        return registerBtn
+    }()
     
-    
+    var loginRegstSg : UISegmentedControl = {
+        let loginRegstSg = UISegmentedControl(items: [(NSLocalizedString("Log In", comment: "")).localized(), (NSLocalizedString("Sign up", comment: "")).localized()])
+        loginRegstSg.selectedSegmentIndex = 1
+        loginRegstSg.backgroundColor = UIColor(red: (76/255), green: (133/255), blue: (104/255), alpha: 1)
+        loginRegstSg.translatesAutoresizingMaskIntoConstraints = false
+        loginRegstSg.addTarget(self, action: #selector(loginRegstSgChg), for:  .valueChanged)
+        return loginRegstSg
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         view.setGradiantView()
         
-        self.view.addSubview(titlelbl)
-        self.view.addSubview(signUpBtn)
-        self.view.addSubview(singInBtn)
-
         self.view.addSubview(stack)
-        self.stack.addArrangedSubview(emailTextFiled)
-        self.stack.addArrangedSubview(passwordTextFiled)
         
-        //MARK: step 3
+        self.stack.addArrangedSubview(passTf)
+        self.stack.addArrangedSubview(nameTF)
+        self.stack.addArrangedSubview(emailTF)
+
+        view.addSubview(registerBtn)
+        view.addSubview(loginRegstSg)
+        view.addSubview(greenImage)
         NSLayoutConstraint.activate([
-            //***
-            self.titlelbl.topAnchor.constraint(equalTo:self.view.safeAreaLayoutGuide.topAnchor, constant: 40),
-            self.titlelbl.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            
-
-            //***
-            self.stack.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            self.stack.topAnchor.constraint(equalTo: self.titlelbl.bottomAnchor, constant: 150),
-            self.stack.widthAnchor.constraint(equalTo: self.view.widthAnchor, constant: -100),
-
-            //singInBtn btn
-            self.singInBtn.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            self.singInBtn.topAnchor.constraint(equalTo: self.stack.bottomAnchor, constant: 20),
-            self.singInBtn.heightAnchor.constraint(equalToConstant: 50),
-            //frame
-            self.singInBtn.widthAnchor.constraint(equalToConstant: self.view.frame.width / 1.2),
-            
-            //signUpBtn BTN
-            self.signUpBtn.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            self.signUpBtn.topAnchor.constraint(equalTo: self.singInBtn.bottomAnchor, constant: 5),
-            self.signUpBtn.heightAnchor.constraint(equalToConstant: 30),
-            self.signUpBtn.widthAnchor.constraint(equalToConstant: self.view.frame.width),
+          greenImage.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40),
+          greenImage.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40),
+          greenImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+          greenImage.widthAnchor.constraint(equalToConstant: 100),
+          greenImage.heightAnchor.constraint(equalToConstant: 250),
         ])
-        
+        NSLayoutConstraint.activate([
+            loginRegstSg.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loginRegstSg.topAnchor.constraint(equalTo: view.topAnchor, constant: 200),
+            loginRegstSg.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7)
+        ])
+        NSLayoutConstraint.activate([
+        self.stack.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+        self.stack.topAnchor.constraint(equalTo: self.loginRegstSg.bottomAnchor, constant: 40),
+        self.stack.widthAnchor.constraint(equalTo: self.view.widthAnchor, constant: -100),
+        ])
+        NSLayoutConstraint.activate([
+            registerBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
+            registerBtn.topAnchor.constraint(equalTo: stack.bottomAnchor, constant: 70),
+            registerBtn.widthAnchor.constraint(equalToConstant: 330),
+            registerBtn.heightAnchor.constraint(equalToConstant: 50)
+
+        ])
     }
     
-    @objc func didPresssignUpButton(_ sender: UIButton){
-        let vc = RegisterVC()
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true, completion: nil)
-    
-    }
-    @objc func PresssignUpButton(_ sender: UIButton){
-        let vc = TabVC()
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true, completion: nil)
-}
-    
-    @objc private func tapToSignIn() {
-        let email = self.emailTextFiled.textFiled.text ?? ""
-        let password = self.passwordTextFiled.textFiled.text ?? ""
-        
-        if email.isEmpty || password.isEmpty {
-            return self.alertUserLoginError()
+    @objc func loginRigs() {
+        if loginRegstSg.selectedSegmentIndex == 0 {
+            login()
+        }else {
+            register()
         }
+    }
+    
+    @objc func register(){
         
-        
-        Auth.auth().signIn(withEmail: email, password: password) { result, error in
-            if error != nil {
-                print(error as Any)
-                return
-            }
+        if let email = emailTF.textFiled.text, email.isEmpty == false,
+           let password = passTf.textFiled.text, password.isEmpty == false {
             
-            let vc = TabVC()
-            vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: true, completion: nil)
+            Auth.auth().createUser(withEmail: email, password: password) { result, error in
+                if error == nil {
+                    // go to home vc
+                    let vc = TabVC()
+                    vc.modalPresentationStyle = .fullScreen
+                    self.present(vc, animated: true, completion: nil)
+
+                } else {
+                    print(error?.localizedDescription)
+                }
+                guard let user = result?.user else {return}
+                
+                self.db.collection("users").document(user.uid).setData([
+                    "name": self.nameTF,
+                    "email": String(user.email!),
+                    "userID": user.uid,
+                    "status": "yes"
+                ], merge: true) { err in
+                    if let err = err {
+                        print("Error writing document: \(err)")
+                    } else {
+                        print("Document successfully written!")
+                    }
+                }
+            }
         }
     }
-    func alertUserLoginError() {
-        let alert = UIAlertController(title: "Woops",
-         message: "Please enter your emile.",
-                                preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title:"Dismiss",
-                                      style: .cancel, handler: nil))
-        present(alert, animated: true)
     
-}
+    func login() {
+        if let email = emailTF.textFiled.text, email.isEmpty == false,
+           let password = passTf.textFiled.text, password.isEmpty == false {
+            
+            Auth.auth().signIn(withEmail: email, password: password) { result, error in
+                if error == nil {
+                    // go to main vc
+                    let vc = TabVC()
+                    vc.modalPresentationStyle = .fullScreen
+                    self.present(vc, animated: true, completion: nil)
+
+                } else {
+                    print(error?.localizedDescription)
+                }
+            }
+        }
+        
+    }
+    
+    @objc func loginRegstSgChg() {
+        let tit = loginRegstSg.titleForSegment(at: loginRegstSg.selectedSegmentIndex)
+        registerBtn.setTitle(tit, for: .normal)
+    }
 }
 
+extension String {
+    
+    func localized() -> String {
+        
+        return NSLocalizedString(self,
+                                 tableName: "localized",
+                                 bundle: .main,
+                                 value: self,
+                                 comment: self)
+    }
+}

@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import ContactsUI
 
-class AttendantVC : UIViewController {
+class AttendantVC : UIViewController,CNContactViewControllerDelegate {
      
     var attendant : Array<AttendantModel> = []
     
@@ -112,7 +113,7 @@ class AttendantVC : UIViewController {
              cell.ageLabel.text = "العمر:\(atendant.age)"
             cell.idLabel.text = " الهويه الوطنيه:  \(atendant.id)"
             cell.numberLabel.text = "رقم الهاتف:  \(atendant.num)"
-        
+            cell.myTabelViewController = self
             return cell
         }
         
@@ -159,6 +160,19 @@ class AttendantVC : UIViewController {
             present (alertController, animated:true, completion: nil)
         
             }
+        func contactViewController(_ viewController: CNContactViewController, didCompleteWith contact: CNContact?) {
+            if contact == nil {
+                navigationController?.popViewController(animated: true)
+            }
+        }
+        
+        func CallCell(cell: UICollectionViewCell){
+            let callAction = UIAlertAction(title: "Call", style:.default){(_) in
+            }
+                let controller = CNContactViewController(forNewContact: nil)
+                controller.delegate = self
+                self.navigationController?.pushViewController(controller, animated: true)
+        }
 
         func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
                 
