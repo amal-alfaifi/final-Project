@@ -41,6 +41,4 @@ let hospital = [
 
 ]
 
-let dictionary : [String: Int] = ["a" : 1 , "b" : 2 , "c" : 3]
-
-let s : Set = [1,2,3]
+let s : Set = [1,2,3,4,5]

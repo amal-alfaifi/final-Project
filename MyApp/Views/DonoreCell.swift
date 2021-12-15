@@ -110,6 +110,5 @@ class DonorsCell: UICollectionViewCell, CNContactViewControllerDelegate {
         myTabelViewController?.CallCell(cell: self)
         let controller = CNContactViewController(forNewContact: nil)
         controller.delegate = self
-//        self.navigationController?.showViewController(controller)
     }
 }

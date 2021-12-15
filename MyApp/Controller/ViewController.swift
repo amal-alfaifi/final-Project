@@ -20,10 +20,7 @@ class ViewController : UIView {
         icon.translatesAutoresizingMaskIntoConstraints = false
         return icon
     }()
-    
-    
-    
-    
+
     let textFiled : UITextField = {
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.tintColor = colors.titlesColor

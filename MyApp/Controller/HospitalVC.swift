@@ -11,6 +11,8 @@ import Foundation
 import UIKit
 
 class HospitalVC: UIViewController {
+    
+    
     lazy var hospitalTV : UITableView = {
         let hospitalTV = UITableView()
         hospitalTV.register(UITableViewCell.self, forCellReuseIdentifier: "hospitalCell")
@@ -25,7 +27,7 @@ class HospitalVC: UIViewController {
         super.viewDidLoad()
 
         navigationItem.title = (NSLocalizedString("Hospital", comment: ""))
-
+        
         view.addSubview(hospitalTV)
         NSLayoutConstraint.activate([
             hospitalTV.topAnchor.constraint(equalTo: view.topAnchor),
@@ -33,6 +35,7 @@ class HospitalVC: UIViewController {
             hospitalTV.rightAnchor.constraint(equalTo: view.rightAnchor),
             hospitalTV.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+        
         let tap = UISwipeGestureRecognizer(
                 target: self,
                 action: #selector(hospitalLocation)
@@ -43,6 +46,7 @@ class HospitalVC: UIViewController {
     }
 
 }
+
 extension HospitalVC : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -73,7 +77,6 @@ extension HospitalVC : UITableViewDelegate, UITableViewDataSource{
         print(indexPath.row) 
         let vc = AttendantVC()
         vc.navigationItem.largeTitleDisplayMode = .never
-        
         navigationController?.pushViewController(vc, animated: true)
     
         

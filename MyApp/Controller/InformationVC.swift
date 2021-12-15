@@ -13,12 +13,16 @@ class InformationVC : UIViewController {
     public let labelQ: UILabel = {
         let labelQ = UILabel()
         labelQ.translatesAutoresizingMaskIntoConstraints = false
+        labelQ.layer.borderWidth = 3
+        labelQ.layer.borderColor = UIColor.systemGray4.cgColor
+        return labelQ
+    }()
+    public let labelQq: UILabel = {
+        let labelQ = UILabel()
+        labelQ.translatesAutoresizingMaskIntoConstraints = false
         labelQ.font = UIFont(name: "Helvetica-Bold", size: 18)
         labelQ.textColor = #colorLiteral(red: 0.1941709816, green: 0.44306916, blue: 0.2248781919, alpha: 1)
         labelQ.text = (NSLocalizedString("b", comment: ""))
-        labelQ.layer.borderWidth = 3
-        labelQ.layer.borderColor = UIColor.systemGray4.cgColor
-        labelQ.textAlignment = .left
         return labelQ
     }()
 
@@ -62,6 +66,13 @@ class InformationVC : UIViewController {
             imageView.rightAnchor.constraint(equalTo: labelQ.rightAnchor, constant: -20),
             imageView.heightAnchor.constraint(equalTo: labelQ.heightAnchor, constant: -70),
             imageView.widthAnchor.constraint(equalTo: labelQ.widthAnchor, constant: -280),
+            ])
+        view.addSubview(labelQq)
+        NSLayoutConstraint.activate([
+            labelQq.topAnchor.constraint(equalTo: labelQ.topAnchor,constant: 36),
+            labelQq.rightAnchor.constraint(equalTo: imageView.leftAnchor, constant: -20),
+            labelQq.heightAnchor.constraint(equalTo: labelQ.heightAnchor, constant: -70),
+            labelQq.widthAnchor.constraint(equalTo: labelQ.widthAnchor, constant: -80),
             ])
         view.addSubview(informationTF)
         NSLayoutConstraint.activate([

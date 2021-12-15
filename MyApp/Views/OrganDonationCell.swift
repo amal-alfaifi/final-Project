@@ -29,7 +29,7 @@ class OrganDonationCell: UICollectionViewCell {
         return label
     }()
     
-    public let sexLabel: UILabel = {
+    public let         genderLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         label.textColor = .black
@@ -56,7 +56,7 @@ class OrganDonationCell: UICollectionViewCell {
   
         contentView.addSubview(nameLabel)
         contentView.addSubview(idLabel)
-        contentView.addSubview(sexLabel)
+        contentView.addSubview(        genderLabel)
         contentView.addSubview(birthdayLabel)
         
     }
@@ -86,7 +86,7 @@ class OrganDonationCell: UICollectionViewCell {
                               width: 300,
                               height: contentView.frame.size.height-30)
       
-        sexLabel.frame = CGRect(x: 50,
+                genderLabel.frame = CGRect(x: 50,
                               y: 50,
                               width: 300,
                               height: contentView.frame.size.height-30)

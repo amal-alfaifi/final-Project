@@ -117,7 +117,11 @@ class NewDonor: UIViewController, UITextFieldDelegate {
         view.backgroundColor = UIColor (named: "Color-2")
 
        navigationItem.setRightBarButton(infoBarButtonItem, animated: false)
+       
+        //Gesture in any keybord place to dismiss the keybord
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
 
+         view.addGestureRecognizer(tap)
         
         view.addSubview(addButton)
         view.addSubview(LabelN)
@@ -215,6 +219,10 @@ class NewDonor: UIViewController, UITextFieldDelegate {
         vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)
 
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 
 }

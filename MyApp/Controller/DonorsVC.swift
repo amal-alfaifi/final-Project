@@ -12,9 +12,33 @@ class DonorsVC : UIViewController, CNContactViewControllerDelegate {
     
     var donors: Array<DonorsModel> = []
     
-    lazy var searchBar:UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 280,height: 15))
+    lazy var searchBar : UISearchBar = {
+        let s = UISearchBar(frame: CGRect(x: 0, y: 0, width: 280,height: 15))
+        s.searchBarStyle = UISearchBar.Style.default
+        s.placeholder = NSLocalizedString("Search", comment: "")
+        s.sizeToFit()
+        s.isTranslucent = false
+        s.delegate = self
+        return s
+    }()
     
-    private var donorsCV: UICollectionView?
+    lazy var donorsCV: UICollectionView = {
+        var donorsCV = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout.init())
+        donorsCV.delegate = self
+        donorsCV.dataSource = self
+        donorsCV.register(DonorsCell.self, forCellWithReuseIdentifier: "cell")
+        donorsCV.backgroundColor = UIColor (named: "Color")
+        donorsCV.translatesAutoresizingMaskIntoConstraints = false
+        donorsCV.frame = view.bounds
+        return donorsCV
+    }()
+    lazy var layout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 100, height: 100)
+        donorsCV = UICollectionView(frame: .zero,collectionViewLayout: layout)
+        return layout
+    }()
+    
     
     lazy var AddDonorButton: UIButton = {
         let b = UIButton()
@@ -34,38 +58,19 @@ class DonorsVC : UIViewController, CNContactViewControllerDelegate {
         
         DonorsService.shared.listenToDonors{ newdonor in
             self.donors = newdonor
-            self.donorsCV!.reloadData()
+            self.donorsCV.reloadData()
         }
         
         let leftNavBarButton = UIBarButtonItem(customView: searchBar)
         self.navigationItem.rightBarButtonItem = leftNavBarButton
-        searchBar.searchBarStyle = UISearchBar.Style.default
-        searchBar.placeholder = NSLocalizedString("Search", comment: "")
-        searchBar.sizeToFit()
-        searchBar.isTranslucent = false
-        searchBar.delegate = self
-        view.addSubview(searchBar)
         
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 20
-        layout.minimumInteritemSpacing = 20
-        layout.itemSize = CGSize(width: 320,
-                                 height: 150)
-        donorsCV = UICollectionView(frame: .zero,
-                                    collectionViewLayout: layout)
-        
-        guard let DonorsCV = donorsCV else {
-            return
-        }
-        
-        DonorsCV.register(DonorsCell.self, forCellWithReuseIdentifier: "cell")
-        DonorsCV.dataSource = self
-        DonorsCV.delegate = self
-        DonorsCV.backgroundColor = UIColor (named: "Color")
-        view.addSubview(DonorsCV)
-        DonorsCV.frame = view.bounds
-        
+        view.addSubview(donorsCV)
+        NSLayoutConstraint.activate([
+            donorsCV.topAnchor.constraint(equalTo: view.topAnchor),
+            donorsCV.leftAnchor.constraint(equalTo: view.leftAnchor),
+            donorsCV.rightAnchor.constraint(equalTo: view.rightAnchor),
+            donorsCV.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
         
         view.addSubview(searchBar)
         NSLayoutConstraint.activate([
@@ -77,7 +82,7 @@ class DonorsVC : UIViewController, CNContactViewControllerDelegate {
         NSLayoutConstraint.activate([
             AddDonorButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -80),
             AddDonorButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 80),
-            AddDonorButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
+            AddDonorButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
             AddDonorButton.widthAnchor.constraint(equalToConstant: 400),
             AddDonorButton.heightAnchor.constraint(equalToConstant: 60),
         ])
@@ -106,17 +111,15 @@ extension DonorsVC: UICollectionViewDelegate  , UICollectionViewDataSource, UICo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! DonorsCell
         let donorss = donors[indexPath.row]
         
-        cell.nameLabel.text = NSLocalizedString("Name\(donorss.name)", comment: "")
-        cell.idLabel.text = NSLocalizedString("National Identity\(donorss.id)", comment: "")
-        cell.numberLabel.text = NSLocalizedString("Telephone number\(donorss.num)", comment: "")
-        cell.bloodLabel.text = NSLocalizedString("blood type : \(donorss.bloodType)", comment: "")
+        cell.nameLabel.text = "الاسم: \(donorss.name)"
+        cell.idLabel.text = "الهوية الوطنية: \(donorss.id)"
+        cell.numberLabel.text = "رقم الهاتف: \(donorss.num)"
+        cell.bloodLabel.text = "فصيلة الدم : \(donorss.bloodType)"
         cell.myTabelViewController = self
         return cell
     }
     
-    
-    
-    
+    //alert delete and update
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let donorss = donors[indexPath.row]
         
@@ -140,7 +143,7 @@ extension DonorsVC: UICollectionViewDelegate  , UICollectionViewDataSource, UICo
             
             DonorsService.shared.deleteDonor(donorId: donorss.id)
         }
-
+        
         alertController.addTextField{(textField) in
             textField.text = donorss.name
         }
@@ -158,30 +161,26 @@ extension DonorsVC: UICollectionViewDelegate  , UICollectionViewDataSource, UICo
         present (alertController, animated:true, completion: nil)
     }
     
-    func contactViewController(_ viewController: CNContactViewController, didCompleteWith contact: CNContact?) {
-        if contact == nil {
-            navigationController?.popViewController(animated: true)
-        }
-    }
+    /*
+     Func
+     تفتح صفحة حفظ بيانات الشخص
+     */
     
     func CallCell(cell: UICollectionViewCell){
-        let callAction = UIAlertAction(title: "Call", style:.default){(_) in
-        }
-            let controller = CNContactViewController(forNewContact: nil)
-            controller.delegate = self
-            self.navigationController?.pushViewController(controller, animated: true)
+        let controller = CNContactViewController(forNewContact: nil)
+        controller.delegate = self
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
-    
+    // البحث بفصيلة الدم
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
         if searchText.isEmpty {
             let temp = donors
             donors = temp
             
             DonorsService.shared.listenToDonors { newdonor in
                 self.donors = newdonor
-                self.donorsCV!.reloadData()
+                self.donorsCV.reloadData()
             }
             
         } else {
@@ -190,14 +189,11 @@ extension DonorsVC: UICollectionViewDelegate  , UICollectionViewDataSource, UICo
                 return oneAttendant.bloodType.starts(with: searchText)
             })
         }
-        donorsCV?.reloadData()
+        donorsCV.reloadData()
         
     }
-    
 }
-
 func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
     searchBar.resignFirstResponder()
-    
 }
 

@@ -11,4 +11,5 @@ pod 'Firebase/Analytics'
  pod 'Firebase/Firestore'
 pod 'Firebase/Storage'
 pod ‘lottie-ios’
+pod ‘IQKeyboardManagerSwift’
 end

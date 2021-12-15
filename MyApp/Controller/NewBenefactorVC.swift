@@ -10,9 +10,9 @@ import FirebaseFirestore
 import SafariServices
 
 var sender = false
-class NewBenefactor: UIViewController, UITextFieldDelegate {
-    
 
+class NewBenefactorVC: UIViewController, UITextFieldDelegate {
+    
     lazy var odNameTF: UITextField = {
         let tf = UITextField()
         tf.translatesAutoresizingMaskIntoConstraints = false
@@ -122,43 +122,43 @@ class NewBenefactor: UIViewController, UITextFieldDelegate {
     lazy var checkButton: UIButton = {
         let b = UIButton()
         b.addTarget(self, action: #selector(checkBoxTapped), for: .touchUpInside)
-        b.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
+        b.setImage(UIImage(systemName: "squareshape"), for: .normal)
         b.translatesAutoresizingMaskIntoConstraints = false
         return b
     }()
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor (named: "Color-2")
-  
+        
         view.addSubview(addButton)
         view.addSubview(LabelN)
         view.addSubview(LabelID)
         view.addSubview(genderLabel)
         view.addSubview(Labelbirthday)
- 
+        
         LabelN.frame = CGRect(x: 50,
-                             y: 110,
-                             width: 300,
-                             height:130)
+                              y: 110,
+                              width: 300,
+                              height:130)
         
         LabelID.frame = CGRect(x: 50,
-                             y: 210,
-                             width: 300,
-                             height:130)
+                               y: 210,
+                               width: 300,
+                               height:130)
         
         genderLabel.frame = CGRect(x: 55,
-                             y: 320,
-                             width: 300,
-                             height:130)
+                                   y: 320,
+                                   width: 300,
+                                   height:130)
         
         Labelbirthday.frame = CGRect(x: 220,
-                            y: 420,
-                            width: 140,
-                            height:130)
+                                     y: 420,
+                                     width: 140,
+                                     height:130)
         
-  
+        
         view.addSubview(odNameTF)
         NSLayoutConstraint.activate([
             odNameTF.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -198,7 +198,7 @@ class NewBenefactor: UIViewController, UITextFieldDelegate {
         view.addSubview(checkButton)
         NSLayoutConstraint.activate([
             checkButton.topAnchor.constraint(equalTo: birthTF.bottomAnchor, constant: 7),
-            checkButton.rightAnchor.constraint(equalTo: patButton.leftAnchor, constant: 50),
+            checkButton.rightAnchor.constraint(equalTo: patButton.leftAnchor, constant: 40),
             checkButton.heightAnchor.constraint(equalToConstant: 48),
             checkButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -270)
         ])
@@ -225,46 +225,46 @@ class NewBenefactor: UIViewController, UITextFieldDelegate {
         dismiss(animated: true, completion: nil)
         return true
     }
-     func add() {
-
-            let name = odNameTF.text ?? ""
-            let id = odIdTF.text ?? ""
-            let gender = genderTF.text ?? ""
-            let birthday = birthTF.text ?? ""
-
-            OrganDonationService.shared.addvolunteer(od: OrganModel(name: name, id: id, gender: gender , birthday: birthday))
-        }
+    func add() {
+        
+        let name = odNameTF.text ?? ""
+        let id = odIdTF.text ?? ""
+        let gender = genderTF.text ?? ""
+        let birthday = birthTF.text ?? ""
+        
+        OrganDonationService.shared.addvolunteer(od: OrganModel(name: name, id: id, gender: gender , birthday: birthday))
+    }
     func alertUserLoginError() {
-        let alert = UIAlertController(title: "Condition",
-                                      message: "You must agree to the terms.",
+        let alert = UIAlertController(title:(NSLocalizedString("You must agree to the terms.", comment: "")),
+                                      message: (NSLocalizedString("Condition", comment: "")),
                                       preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title:"Cancle",
+        alert.addAction(UIAlertAction(title:(NSLocalizedString("Cancle", comment: "")),
                                       style: .cancel, handler: nil))
         present(alert, animated: true)
     }
-
+    
     @objc func infoButtomItemTapped() {
         let vc = InformationVC()
         vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)
-
+        
     }
     @objc func privacyPolicy(_ sender: Any) {
         let privacyURL = "https://laws.boe.gov.sa/BoeLaws/Laws/LawDetails/4a16fbc8-7f1d-4647-8acc-ad0900d849c2/1"
         let safariVC = SFSafariViewController(url: URL(string: privacyURL)!)
         self.present(safariVC, animated: true)
-      }
+    }
     @objc func checkBoxTapped(_ sender: UIButton) {
         if sender.isSelected {
-           sender.isSelected = false
-           sender.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
+            sender.isSelected = false
+            sender.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
             self.add()
         }
-         else {
+        else {
             sender.isSelected  = true
             sender.setImage(UIImage(systemName: "squareshape"), for: .normal)
             self.alertUserLoginError()
         }
     }
-
+    
 }

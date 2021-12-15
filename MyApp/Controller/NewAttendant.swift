@@ -121,22 +121,22 @@ class NewAttendant: UIViewController, UITextFieldDelegate {
         
         
         LabelN.frame = CGRect(x: 50,
-                             y: 100,
+                             y: 110,
                              width: 300,
                              height:130)
         
         LabelID.frame = CGRect(x: 50,
-                             y: 200,
+                             y: 210,
                              width: 300,
                              height:130)
         
-        LabelNum.frame = CGRect(x: 70,
+        LabelNum.frame = CGRect(x: 60,
                              y: 320,
                              width: 300,
                              height:130)
         
-        LabelAge.frame = CGRect(x: 70,
-                            y: 420,
+        LabelAge.frame = CGRect(x: 60,
+                            y: 423,
                             width: 300,
                             height:130)
         

@@ -19,7 +19,6 @@ class TabVC: UITabBarController {
       return navController
     }
   func setupVCs() {
-      
      viewControllers = [
         createNavController(for:CitiesVC(), title: NSLocalizedString("", comment: ""), image: UIImage(systemName: "homekit")!),
         createNavController(for:ProfileVC(), title: NSLocalizedString("", comment: ""), image: UIImage(systemName: "person")!),
@@ -31,6 +30,9 @@ class TabVC: UITabBarController {
    }
   override func viewDidLoad() {
     super.viewDidLoad()
+      tabBar.layer.borderColor = UIColor.systemGray.cgColor
+      tabBar.layer.borderWidth = 0.5
+      tabBar.backgroundColor = .white
       tabBar.tintColor = .label
       setupVCs()
     

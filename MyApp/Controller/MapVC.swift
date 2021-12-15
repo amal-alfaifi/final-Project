@@ -41,7 +41,6 @@ class MapVC: UIViewController , UISearchBarDelegate {
         
         // Hide Search
         searchBar.resignFirstResponder()
-        dismiss(animated: true, completion: nil)
         
         //Search Request
         let searchRequest = MKLocalSearch.Request()

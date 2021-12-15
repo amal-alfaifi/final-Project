@@ -25,6 +25,7 @@ class CitiesVC: UIViewController {
         btn.titleLabel?.font = .systemFont(ofSize: 25, weight: .bold)
         return btn
     }()
+    
     lazy var khamisButton: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
@@ -39,6 +40,7 @@ class CitiesVC: UIViewController {
         btn.titleLabel?.font = .systemFont(ofSize: 25, weight: .bold)
         return btn
     }()
+    
     lazy var uhodButton: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
@@ -72,7 +74,7 @@ class CitiesVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor (named: "Color")
-        
+        title = (NSLocalizedString("City", comment: ""))
         view.addSubview(asirButton)
         NSLayoutConstraint.activate([
             asirButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -50),
@@ -111,7 +113,6 @@ class CitiesVC: UIViewController {
 
     @objc private func cityButtonTapped() {
             let vc = ServiceTypeVC()
-        
         vc.navigationItem.largeTitleDisplayMode = .never
         vc.modalPresentationStyle = .fullScreen
         navigationController?.pushViewController(vc, animated: true)
