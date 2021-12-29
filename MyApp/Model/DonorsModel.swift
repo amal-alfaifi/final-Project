@@ -12,4 +12,5 @@ struct DonorsModel {
     let id: String
     let bloodType: String
     let num : String
+    let userID: String
 }

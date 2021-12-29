@@ -10,5 +10,6 @@ struct OrganModel {
     var id : String
     var gender : String
     var birthday : String
+    var userID: String
 }
 

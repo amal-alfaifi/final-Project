@@ -10,4 +10,6 @@ struct AttendantModel {
     var id: String
     var age : String
     var num : String
+    var hospitalName: String?
+    var userID: String
 }

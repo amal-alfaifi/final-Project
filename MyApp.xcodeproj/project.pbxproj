@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		47D32E5CE2590FD7700F254A /* Pods_MyApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC35F4F0D2AD98C8ED693BDE /* Pods_MyApp.framework */; };
+		C9199F43277C717D0079890F /* BlurV.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9199F42277C717D0079890F /* BlurV.swift */; };
 		C94DB98C275D08C200EABA56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94DB98B275D08C200EABA56 /* AppDelegate.swift */; };
 		C94DB98E275D08C200EABA56 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94DB98D275D08C200EABA56 /* SceneDelegate.swift */; };
 		C94DB990275D08C200EABA56 /* CitiesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94DB98F275D08C200EABA56 /* CitiesVC.swift */; };
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		8153B658AD25DE3D64AA9497 /* Pods-MyApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyApp.release.xcconfig"; path = "Target Support Files/Pods-MyApp/Pods-MyApp.release.xcconfig"; sourceTree = "<group>"; };
 		C4FB114F80921C116076FF6F /* Pods-MyApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyApp.debug.xcconfig"; path = "Target Support Files/Pods-MyApp/Pods-MyApp.debug.xcconfig"; sourceTree = "<group>"; };
+		C9199F42277C717D0079890F /* BlurV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurV.swift; sourceTree = "<group>"; };
 		C94DB988275D08C200EABA56 /* MyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C94DB98B275D08C200EABA56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C94DB98D275D08C200EABA56 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,15 +134,13 @@
 		C94DB98A275D08C200EABA56 /* MyApp */ = {
 			isa = PBXGroup;
 			children = (
-				C9FB96962762368D00178446 /* Localizable.strings */,
-				C9A2FC1A275E7D68006EC903 /* Controller */,
-				C9A2FC17275E7D35006EC903 /* Views */,
+				EA1FE99C276FE84D005395CF /* AppDelegate */,
+				C9A2FC1B275E7DB4006EC903 /* Services */,
 				C9A2FC16275E7D25006EC903 /* Model */,
+				C9A2FC17275E7D35006EC903 /* Views */,
+				C9A2FC1A275E7D68006EC903 /* Controllers */,
+				EA1FE99D276FE857005395CF /* Resources */,
 				C94DB9AF275DB8B300EABA56 /* GoogleService-Info.plist */,
-				C94DB98B275D08C200EABA56 /* AppDelegate.swift */,
-				C94DB98D275D08C200EABA56 /* SceneDelegate.swift */,
-				C94DB994275D08C400EABA56 /* Assets.xcassets */,
-				C94DB996275D08C400EABA56 /* LaunchScreen.storyboard */,
 				C94DB999275D08C400EABA56 /* Info.plist */,
 			);
 			path = MyApp;
@@ -161,47 +161,34 @@
 		C9A2FC17275E7D35006EC903 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C9A2FC1C275E7E1E006EC903 /* DonoreCell.swift */,
-				C9A2FC2A275F6F44006EC903 /* AttendantCell.swift */,
-				C9EE8E882766704F006712E4 /* OrganDonationCell.swift */,
+				C94DB996275D08C400EABA56 /* LaunchScreen.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		C9A2FC1A275E7D68006EC903 /* Controller */ = {
+		C9A2FC1A275E7D68006EC903 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C9EE8E7C2765DB3C006712E4 /* 81548-loading.json */,
-				C9A2FC1B275E7DB4006EC903 /* service */,
 				C9A2FC362760ED7C006EC903 /* Color.swift */,
 				C9A2FC382760FE15006EC903 /* ViewController.swift */,
-				C9EE8E7E2765DD41006712E4 /* AnimationViewController.swift */,
-				C94DB9B5275E050B00EABA56 /* LogInVC.swift */,
-				C94DB98F275D08C200EABA56 /* CitiesVC.swift */,
-				C94DB99F275D0BB800EABA56 /* ServiceTypeVC.swift */,
-				C94DB9A7275D196F00EABA56 /* DonorsVC.swift */,
-				C94DB9AB275D2CD000EABA56 /* NewDonor.swift */,
-				C94DB9A3275D11CA00EABA56 /* AttendantVC.swift */,
-				C9A2FC2C275F703F006EC903 /* NewAttendant.swift */,
-				C9A2FC24275F40AE006EC903 /* HospitalVC.swift */,
-				C94DB9B3275DEB1E00EABA56 /* TabVC.swift */,
-				C9A2FC1E275E8CD4006EC903 /* ProfileVC.swift */,
-				C9A2FC342760A04F006EC903 /* InformationVC.swift */,
-				C9FB968D2761FC5900178446 /* MapVC.swift */,
-				C9EE8E8027662FBD006712E4 /* OrganDonationVC.swift */,
-				C9E6B0A32766778F005628B2 /* NewBenefactorVC.swift */,
+				EA1FE99A276FE80B005395CF /* Animation */,
+				EA1FE99B276FE833005395CF /* Login */,
+				EA1FE999276FE800005395CF /* TabBar */,
+				EA1FE997276FE797005395CF /* Donors */,
+				EA1FE996276FE78C005395CF /* Hospital */,
+				EA1FE998276FE7A5005395CF /* Organ Donation */,
 			);
-			path = Controller;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
-		C9A2FC1B275E7DB4006EC903 /* service */ = {
+		C9A2FC1B275E7DB4006EC903 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				C94DB9B1275DBAC300EABA56 /* DonorsService.swift */,
 				C9A2FC22275F3C67006EC903 /* AttendantService.swift */,
 				C9EE8E8627666EE8006712E4 /* OrganDonationService.swift */,
 			);
-			path = service;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		E9E0B0D04C91491FD236BD45 /* Frameworks */ = {
@@ -210,6 +197,86 @@
 				FC35F4F0D2AD98C8ED693BDE /* Pods_MyApp.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EA1FE996276FE78C005395CF /* Hospital */ = {
+			isa = PBXGroup;
+			children = (
+				C9A2FC2A275F6F44006EC903 /* AttendantCell.swift */,
+				C94DB9A3275D11CA00EABA56 /* AttendantVC.swift */,
+				C9A2FC2C275F703F006EC903 /* NewAttendant.swift */,
+				C9A2FC24275F40AE006EC903 /* HospitalVC.swift */,
+			);
+			path = Hospital;
+			sourceTree = "<group>";
+		};
+		EA1FE997276FE797005395CF /* Donors */ = {
+			isa = PBXGroup;
+			children = (
+				C9A2FC1C275E7E1E006EC903 /* DonoreCell.swift */,
+				C9A2FC342760A04F006EC903 /* InformationVC.swift */,
+				C94DB9A7275D196F00EABA56 /* DonorsVC.swift */,
+				C94DB9AB275D2CD000EABA56 /* NewDonor.swift */,
+			);
+			path = Donors;
+			sourceTree = "<group>";
+		};
+		EA1FE998276FE7A5005395CF /* Organ Donation */ = {
+			isa = PBXGroup;
+			children = (
+				C9EE8E882766704F006712E4 /* OrganDonationCell.swift */,
+				C9EE8E8027662FBD006712E4 /* OrganDonationVC.swift */,
+				C9E6B0A32766778F005628B2 /* NewBenefactorVC.swift */,
+			);
+			path = "Organ Donation";
+			sourceTree = "<group>";
+		};
+		EA1FE999276FE800005395CF /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				C94DB99F275D0BB800EABA56 /* ServiceTypeVC.swift */,
+				C94DB98F275D08C200EABA56 /* CitiesVC.swift */,
+				C94DB9B3275DEB1E00EABA56 /* TabVC.swift */,
+				C9A2FC1E275E8CD4006EC903 /* ProfileVC.swift */,
+				C9199F42277C717D0079890F /* BlurV.swift */,
+				C9FB968D2761FC5900178446 /* MapVC.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		EA1FE99A276FE80B005395CF /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				C9EE8E7E2765DD41006712E4 /* AnimationViewController.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
+		EA1FE99B276FE833005395CF /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C94DB9B5275E050B00EABA56 /* LogInVC.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		EA1FE99C276FE84D005395CF /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				C94DB98B275D08C200EABA56 /* AppDelegate.swift */,
+				C94DB98D275D08C200EABA56 /* SceneDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		EA1FE99D276FE857005395CF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C9EE8E7C2765DB3C006712E4 /* 81548-loading.json */,
+				C9FB96962762368D00178446 /* Localizable.strings */,
+				C94DB994275D08C400EABA56 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -359,6 +426,7 @@
 				C9A2FC25275F40AE006EC903 /* HospitalVC.swift in Sources */,
 				C94DB98E275D08C200EABA56 /* SceneDelegate.swift in Sources */,
 				C94DB9A0275D0BB800EABA56 /* ServiceTypeVC.swift in Sources */,
+				C9199F43277C717D0079890F /* BlurV.swift in Sources */,
 				C94DB9B6275E050B00EABA56 /* LogInVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
