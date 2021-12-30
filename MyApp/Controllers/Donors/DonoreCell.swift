@@ -106,6 +106,8 @@ class DonorsCell: UICollectionViewCell, CNContactViewControllerDelegate {
                               height: contentView.frame.size.height-30)
 
     }
+    
+    ////
     @objc func Donornumber() {
         delegate?.didTapButton(cell: self, didTappedThe: phoneBtn)
     }

@@ -263,3 +263,4 @@ extension AttendantVC : CellDelegateA {
         addData(attendants: attendant[indexPath.row])
     }
 }
+
