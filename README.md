@@ -19,9 +19,9 @@ An application that enables those wishing to volunteer or donate to record and s
  Volunteering:
 - As a volunteer, I want to add my data and enable those in need to see it and communicate with me.
 - As a needy, I want to see the volunteers' data so that I can communicate with them.
-Location :
+ Location :
 - As a user, I want to search for the hospital and find its location so that I can reach it.
-Profile personly:
+ Profile personly:
 - As a user, I want to see my data so I can edit and save it.
 - As a user, I want to change the appearance of the application to allow the use of night mode and light mode.
 - As a user, I want to hide my profile picture to preserve privacy.
