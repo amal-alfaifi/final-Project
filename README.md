@@ -66,8 +66,8 @@ auth.logout()
 ## Models
 - User model
 {  User: {name: String , id: String, userEmail: String} }
-- HospitalModel
+- Hospital Model
 {  User: {name : String, id : String, image : String} }
-- DonorsModel 
-- AttendantModel
-- OrganModel
+- Donors Model 
+- Attendant Model
+- Organ Model
