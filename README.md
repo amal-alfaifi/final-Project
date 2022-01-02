@@ -5,26 +5,28 @@
 An application that enables those wishing to volunteer or donate to record and save their data, see the locations of hospitals near them and available for volunteering, and display their contact information for people in need.
 
 ## User Stories
-- Registration: As a user, I want to register in the application so that I can save my data.
-- Login: As a user, I want to log in so I can use the app.
-- the cities :
-As a volunteer or donor, I want to see the available areas in my city to facilitate access to its hospitals.
-- Donation :
-As a donor, I want to add my data and enable those in need of blood to see it and communicate with me.
-As a donor, I want to add my data so that those in need, after the death of the donor, can benefit from the organs.
-As a needy, I want to see the donors' data so that I can communicate with them.
-As a user, I want to read more about blood group information in order to benefit from the information.
-- Volunteering:
-As a volunteer, I want to add my data and enable those in need to see it and communicate with me.
-As a needy, I want to see the volunteers' data so that I can communicate with them.
+ Registration: 
+ - As a user, I want to register in the application so that I can save my data.
+ Login:
+ - As a user, I want to log in so I can use the app.
+ the cities :
+- As a volunteer or donor, I want to see the available areas in my city to facilitate access to its hospitals.
+ Donation :
+- As a donor, I want to add my data and enable those in need of blood to see it and communicate with me.
+- As a donor, I want to add my data so that those in need, after the death of the donor, can benefit from the organs.
+- As a needy, I want to see the donors' data so that I can communicate with them.
+- As a user, I want to read more about blood group information in order to benefit from the information.
+ Volunteering:
+- As a volunteer, I want to add my data and enable those in need to see it and communicate with me.
+- As a needy, I want to see the volunteers' data so that I can communicate with them.
 Location :
-As a user, I want to search for the hospital and find its location so that I can reach it.
-- Profile personly:
-As a user, I want to see my data so I can edit and save it.
-As a user, I want to change the appearance of the application to allow the use of night mode and light mode.
-As a user, I want to hide my profile picture to preserve privacy.
-As a user, I want to change the language from Arabic to English and vice versa to make the application easier to use.
-As a user, I can log out of the app so that no one else can use my data.
+- As a user, I want to search for the hospital and find its location so that I can reach it.
+Profile personly:
+- As a user, I want to see my data so I can edit and save it.
+- As a user, I want to change the appearance of the application to allow the use of night mode and light mode.
+- As a user, I want to hide my profile picture to preserve privacy.
+- As a user, I want to change the language from Arabic to English and vice versa to make the application easier to use.
+- As a user, I can log out of the app so that no one else can use my data.
 
 | Component        | Permissions | Behavu 
 | :---             |     ---   |   :---    |
