@@ -41,7 +41,7 @@ As a user, I can log out of the app so that no one else can use my data.
 | Attendant page  | user only  | Show all volunteer, link to new Attendant.|
 | New Attendant page   | user only   | add volunteer data by user.|
 | profile page      | user only | Change the app language and change between dark or light mode, change my data.|
-
+| location page | user only | Find Hospitals location.|
 
 ## Components: 
 - AnimationPage.
@@ -57,6 +57,7 @@ As a user, I can log out of the app so that no one else can use my data.
 - Attendant page.
 - New Attendant page.
 - profile page.
+- location page.
 
 ## Services
 auth.login(user)
