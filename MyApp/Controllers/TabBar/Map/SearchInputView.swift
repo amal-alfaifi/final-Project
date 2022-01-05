@@ -227,7 +227,7 @@ extension SearchInputView: UITableViewDelegate , UITableViewDataSource {
         
         let firstIndexPath = IndexPath(row: 0, section: 0)
         let cell = tableView.cellForRow(at: firstIndexPath) as! SearchCell
-        cell.animateButtonIn()
+//        cell.animateButtonIn()
         
         delegate?.addPolyline(forDestinationMapItem: selectedMapItem)
 
