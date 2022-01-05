@@ -2,7 +2,7 @@
 //  Login.swift
 //  MyApp
 //
-//  Created by MacBook on 08/04/1443 AH.
+//  Created by Amal on 08/04/1443 AH.
 //
 
 import UIKit
