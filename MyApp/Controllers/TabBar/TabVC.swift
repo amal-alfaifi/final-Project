@@ -22,7 +22,7 @@ class TabVC: UITabBarController {
      viewControllers = [
         createNavController(for:CitiesVC(), title: NSLocalizedString("", comment: ""), image: UIImage(systemName: "homekit")!),
         createNavController(for:ProfileVC(), title: NSLocalizedString("", comment: ""), image: UIImage(systemName: "person")!),
-        createNavController(for:MapVC(), title: NSLocalizedString("lo", comment: ""), image: UIImage(systemName: "location")!),
+        createNavController(for:MapController(), title: NSLocalizedString("lo", comment: ""), image: UIImage(systemName: "location")!),
  
     
 

@@ -207,13 +207,106 @@ class ProfileVC: UIViewController {
         alert.addAction(action)
         alert.addAction(cancel)
         present(alert, animated: true, completion: nil)
-        
+    }
+    @objc func changeAge () {
+        print("OK")
+        let alert = UIAlertController(title: "Change Age", message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .default) { action in
+            let name =  alert.textFields?[0].text
+            self.Age.text = name
+            guard let currentUserID = Auth.auth().currentUser?.uid else {return}
+            Firestore.firestore().document("users/\(currentUserID)").updateData([
+                "age" : self.Age.text,
+                "id" : currentUserID])
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addTextField { field in
+            field.text = self.Age.text
+        }
+        alert.addAction(action)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
+    }
+    @objc func changeBloodType () {
+        print("OK")
+        let alert = UIAlertController(title: "Change BloodType", message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .default) { action in
+            let name =  alert.textFields?[0].text
+            self.bloodType.text = name
+            guard let currentUserID = Auth.auth().currentUser?.uid else {return}
+            Firestore.firestore().document("users/\(currentUserID)").updateData([
+                "bloodType" : self.bloodType.text,
+                "id" : currentUserID])
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addTextField { field in
+            field.text = self.bloodType.text
+        }
+        alert.addAction(action)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
+    }
+    @objc func changeGender () {
+        print("OK")
+        let alert = UIAlertController(title: "Change Gender", message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .default) { action in
+            let name =  alert.textFields?[0].text
+            self.Gender.text = name
+            guard let currentUserID = Auth.auth().currentUser?.uid else {return}
+            Firestore.firestore().document("users/\(currentUserID)").updateData([
+                "gender" : self.Gender.text,
+                "id" : currentUserID])
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addTextField { field in
+            field.text = self.Gender.text
+        }
+        alert.addAction(action)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
+    }
+    @objc func changePhone () {
+        print("OK")
+        let alert = UIAlertController(title: "Change Phone", message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .default) { action in
+            let name =  alert.textFields?[0].text
+            self.phone.text = name
+            guard let currentUserID = Auth.auth().currentUser?.uid else {return}
+            Firestore.firestore().document("users/\(currentUserID)").updateData([
+                "phone" : self.phone.text,
+                "id" : currentUserID])
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addTextField { field in
+            field.text = self.phone.text
+        }
+        alert.addAction(action)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         let tap = UITapGestureRecognizer(target: self, action: #selector(changeUserName))
         userNameLabel.addGestureRecognizer(tap)
         userNameLabel.isUserInteractionEnabled = true
+        
+        let tap1 = UITapGestureRecognizer(target: self, action: #selector(changeAge))
+        Age.addGestureRecognizer(tap1)
+        Age.isUserInteractionEnabled = true
+        
+        let tap2 = UITapGestureRecognizer(target: self, action: #selector(changeBloodType))
+        bloodType.addGestureRecognizer(tap2)
+        bloodType.isUserInteractionEnabled = true
+        
+        let tap3 = UITapGestureRecognizer(target: self, action: #selector(changeGender))
+        Gender.addGestureRecognizer(tap3)
+        Gender.isUserInteractionEnabled = true
+        
+        let tap4 = UITapGestureRecognizer(target: self, action: #selector(changePhone))
+        phone.addGestureRecognizer(tap4)
+        phone.isUserInteractionEnabled = true
+        
+        
         view.backgroundColor = UIColor (named: "Color-1")
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))

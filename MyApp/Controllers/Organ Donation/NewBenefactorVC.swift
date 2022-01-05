@@ -64,6 +64,7 @@ class NewBenefactorVC: UIViewController, UITextFieldDelegate {
         b.setTitle((NSLocalizedString("Add", comment: "")), for: .normal)
         b.titleLabel?.font = UIFont(name: "Avenir-Light", size: 27.0)
         b.layer.cornerRadius = 25
+        b.addTarget(self, action: #selector(add), for: .touchUpInside)
         b.backgroundColor = UIColor(red: (76/255), green: (133/255), blue: (104/255), alpha: 1)
         return b
     }()
@@ -120,14 +121,7 @@ class NewBenefactorVC: UIViewController, UITextFieldDelegate {
         b.setTitleColor(UIColor.blue, for: .normal)
         return b
     }()
-    lazy var checkButton: UIButton = {
-        let b = UIButton()
-        b.addTarget(self, action: #selector(checkBoxTapped), for: .touchUpInside)
-        b.setImage(UIImage(systemName: "squareshape"), for: .normal)
-        b.translatesAutoresizingMaskIntoConstraints = false
-        return b
-    }()
-    
+
     func addData() {
         guard let currentUserName = FirebaseAuth.Auth.auth().currentUser else {return}
         db.collection("users").whereField("email", isEqualTo: String(currentUserName.email!))
@@ -216,13 +210,13 @@ class NewBenefactorVC: UIViewController, UITextFieldDelegate {
             patButton.heightAnchor.constraint(equalToConstant: 40),
             patButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -260)
         ])
-        view.addSubview(checkButton)
-        NSLayoutConstraint.activate([
-            checkButton.topAnchor.constraint(equalTo: birthTF.bottomAnchor, constant: 7),
-            checkButton.rightAnchor.constraint(equalTo: patButton.leftAnchor, constant: 40),
-            checkButton.heightAnchor.constraint(equalToConstant: 48),
-            checkButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -270)
-        ])
+//        view.addSubview(checkButton)
+//        NSLayoutConstraint.activate([
+//            checkButton.topAnchor.constraint(equalTo: birthTF.bottomAnchor, constant: 7),
+//            checkButton.rightAnchor.constraint(equalTo: patButton.leftAnchor, constant: 40),
+//            checkButton.heightAnchor.constraint(equalToConstant: 48),
+//            checkButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -270)
+//        ])
         
         NSLayoutConstraint.activate([
             addButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -80),
@@ -246,7 +240,7 @@ class NewBenefactorVC: UIViewController, UITextFieldDelegate {
         dismiss(animated: true, completion: nil)
         return true
     }
-    func add() {
+    @objc func add() {
         
         let name = odNameTF.text ?? ""
         let id = odIdTF.text ?? ""
@@ -255,6 +249,7 @@ class NewBenefactorVC: UIViewController, UITextFieldDelegate {
         let token = UserDefaults.standard.string(forKey: "token")
         OrganDonationService.shared.addvolunteer(od: OrganModel(name: name, id: id, gender: gender , birthday: birthday, userID: token!))
         navigationController?.popViewController(animated: true)
+
     }
     func alertUserLoginError() {
         let alert = UIAlertController(title:(NSLocalizedString("You must agree to the terms.", comment: "")),
@@ -275,16 +270,15 @@ class NewBenefactorVC: UIViewController, UITextFieldDelegate {
         let safariVC = SFSafariViewController(url: URL(string: privacyURL)!)
         self.present(safariVC, animated: true)
     }
-    @objc func checkBoxTapped(_ sender: UIButton) {
-        if sender.isSelected {
-            sender.isSelected = false
-            sender.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
-            self.add()
-        }
-        else {
-            sender.isSelected  = true
-            sender.setImage(UIImage(systemName: "squareshape"), for: .normal)
-            self.alertUserLoginError()
-        }
-    }
+//    @objc func checkBoxTapped(_ sender: UIButton) {
+//        if sender.isSelected {
+//            sender.isSelected = false
+//            sender.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
+//        }
+//        else {
+//            sender.isSelected  = true
+//            sender.setImage(UIImage(systemName: "squareshape"), for: .normal)
+//            self.alertUserLoginError()
+//        }
+//    }
 }

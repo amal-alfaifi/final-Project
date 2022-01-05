@@ -109,6 +109,9 @@ extension DonorsVC: UICollectionViewDelegate  , UICollectionViewDataSource, UICo
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return donors.count
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        addData(donorss: donors[indexPath.row])
+    }
     func collectionView( _ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         let identifier = "\(String(describing: index))" as NSString
         return UIContextMenuConfiguration( identifier: identifier, previewProvider: nil) { _ in
@@ -180,10 +183,8 @@ extension DonorsVC: UICollectionViewDelegate  , UICollectionViewDataSource, UICo
         }
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! DonorsCell
         let donorss = donors[indexPath.row]
-        
         cell.nameLabel.text = "الاسم: \(donorss.name)"
         cell.idLabel.text = "الهوية الوطنية: \(donorss.id)"
         cell.numberLabel.text = "رقم الهاتف: \(donorss.num)"
@@ -191,12 +192,10 @@ extension DonorsVC: UICollectionViewDelegate  , UICollectionViewDataSource, UICo
         cell.delegate = self
         return cell
     }
-    
     /*
      Func
      تفتح صفحة حفظ بيانات الشخص
      */
-    
     func addData(donorss: DonorsModel) {
         let con = CNMutableContact()
         con.givenName = donorss.name
@@ -214,20 +213,16 @@ extension DonorsVC: UICollectionViewDelegate  , UICollectionViewDataSource, UICo
         if searchText.isEmpty {
             let temp = donors
             donors = temp
-            
             DonorsService.shared.listenToDonors { newdonor in
                 self.donors = newdonor
                 self.donorsCV.reloadData()
             }
-            
         } else {
-            
             donors = donors.filter({ oneAttendant in
                 return oneAttendant.bloodType.starts(with: searchText)
             })
+            donorsCV.reloadData()
         }
-        donorsCV.reloadData()
-        
     }
 }
 func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -236,9 +231,7 @@ func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
 //
 extension DonorsVC : CellDelegate {
     func didTapButton(cell: DonorsCell, didTappedThe button: UIButton?) {
-        guard let indexPath = donorsCV.indexPath(for: cell) else {
-            return
-        }
+        guard let indexPath = donorsCV.indexPath(for: cell) else {return}
         addData(donorss: donors[indexPath.row])
     }
 }

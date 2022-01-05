@@ -76,7 +76,7 @@ extension HospitalVC : UITableViewDelegate, UITableViewDataSource{
         return cell
     }
     @objc func hospitalLocation() {
-        var vc = MapVC()
+        var vc = MapController()
         vc.modalPresentationStyle = .fullScreen
         vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)

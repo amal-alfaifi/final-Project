@@ -92,7 +92,7 @@ class AttendantVC : UIViewController,CNContactViewControllerDelegate {
     @objc func addAttendant() {
         let vc = NewAttendant()
         vc.navigationItem.largeTitleDisplayMode = .never
-        navigationController?.pushViewController(vc, animated: true)        
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -233,17 +233,19 @@ extension AttendantVC: UICollectionViewDelegate  , UICollectionViewDataSource, U
         self.navigationController?.pushViewController(unkvc, animated: true)
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let passed = UserDefaults.standard.string(forKey: "hospital")
         if searchText.isEmpty {
             let temp = attendant
             attendant = temp
             
             AttendantService.shared.listenToAttendant{ newAttendant in
-                self.attendant = newAttendant
+                let filteredArray = newAttendant.filter { $0.hospitalName == passed }
+                self.attendant = filteredArray
                 self.attendantsCV.reloadData()
             }
         } else {
-            
-            attendant = attendant.filter({ oneAttendant in
+            let filteredArray = attendant.filter { $0.hospitalName == passed }
+            attendant = filteredArray.filter({ oneAttendant in
                 return oneAttendant.name.starts(with: searchText)
             })
         }
@@ -263,5 +265,3 @@ extension AttendantVC : CellDelegateA {
         addData(attendants: attendant[indexPath.row])
     }
 }
-
-//لتلالتسليل

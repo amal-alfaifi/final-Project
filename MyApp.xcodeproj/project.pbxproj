@@ -8,7 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		47D32E5CE2590FD7700F254A /* Pods_MyApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC35F4F0D2AD98C8ED693BDE /* Pods_MyApp.framework */; };
-		C9199F43277C717D0079890F /* BlurV.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9199F42277C717D0079890F /* BlurV.swift */; };
+		C9199F43277C717D0079890F /* BlurExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9199F42277C717D0079890F /* BlurExtension.swift */; };
+		C92D13942782DE480030A3B3 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92D13932782DE480030A3B3 /* Extension.swift */; };
+		C92D13962782E4750030A3B3 /* LocationRequestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92D13952782E4750030A3B3 /* LocationRequestController.swift */; };
+		C92D139C278319FC0030A3B3 /* SearchInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92D139B278319FC0030A3B3 /* SearchInputView.swift */; };
+		C92D139E27831EAB0030A3B3 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92D139D27831EAB0030A3B3 /* SearchCell.swift */; };
 		C94DB98C275D08C200EABA56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94DB98B275D08C200EABA56 /* AppDelegate.swift */; };
 		C94DB98E275D08C200EABA56 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94DB98D275D08C200EABA56 /* SceneDelegate.swift */; };
 		C94DB990275D08C200EABA56 /* CitiesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94DB98F275D08C200EABA56 /* CitiesVC.swift */; };
@@ -42,14 +46,18 @@
 		C9EE8E83276650C1006712E4 /* OrganModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EE8E82276650C1006712E4 /* OrganModel.swift */; };
 		C9EE8E8727666EE9006712E4 /* OrganDonationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EE8E8627666EE8006712E4 /* OrganDonationService.swift */; };
 		C9EE8E892766704F006712E4 /* OrganDonationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EE8E882766704F006712E4 /* OrganDonationCell.swift */; };
-		C9FB968E2761FC5900178446 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FB968D2761FC5900178446 /* MapVC.swift */; };
+		C9FB968E2761FC5900178446 /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FB968D2761FC5900178446 /* MapController.swift */; };
 		C9FB96942762368D00178446 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C9FB96962762368D00178446 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8153B658AD25DE3D64AA9497 /* Pods-MyApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyApp.release.xcconfig"; path = "Target Support Files/Pods-MyApp/Pods-MyApp.release.xcconfig"; sourceTree = "<group>"; };
 		C4FB114F80921C116076FF6F /* Pods-MyApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyApp.debug.xcconfig"; path = "Target Support Files/Pods-MyApp/Pods-MyApp.debug.xcconfig"; sourceTree = "<group>"; };
-		C9199F42277C717D0079890F /* BlurV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurV.swift; sourceTree = "<group>"; };
+		C9199F42277C717D0079890F /* BlurExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurExtension.swift; sourceTree = "<group>"; };
+		C92D13932782DE480030A3B3 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		C92D13952782E4750030A3B3 /* LocationRequestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRequestController.swift; sourceTree = "<group>"; };
+		C92D139B278319FC0030A3B3 /* SearchInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInputView.swift; sourceTree = "<group>"; };
+		C92D139D27831EAB0030A3B3 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		C94DB988275D08C200EABA56 /* MyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C94DB98B275D08C200EABA56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C94DB98D275D08C200EABA56 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,7 +93,7 @@
 		C9EE8E82276650C1006712E4 /* OrganModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganModel.swift; sourceTree = "<group>"; };
 		C9EE8E8627666EE8006712E4 /* OrganDonationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganDonationService.swift; sourceTree = "<group>"; };
 		C9EE8E882766704F006712E4 /* OrganDonationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganDonationCell.swift; sourceTree = "<group>"; };
-		C9FB968D2761FC5900178446 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
+		C9FB968D2761FC5900178446 /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 		C9FB968F27622B4E00178446 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		C9FB96952762368D00178446 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C9FB96972762368E00178446 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -169,6 +177,7 @@
 		C9A2FC1A275E7D68006EC903 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				EA1FE998276FE7A5005395CF /* Organ Donation */,
 				C9A2FC362760ED7C006EC903 /* Color.swift */,
 				C9A2FC382760FE15006EC903 /* ViewController.swift */,
 				EA1FE99A276FE80B005395CF /* Animation */,
@@ -176,7 +185,6 @@
 				EA1FE999276FE800005395CF /* TabBar */,
 				EA1FE997276FE797005395CF /* Donors */,
 				EA1FE996276FE78C005395CF /* Hospital */,
-				EA1FE998276FE7A5005395CF /* Organ Donation */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -189,6 +197,27 @@
 				C9EE8E8627666EE8006712E4 /* OrganDonationService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		C9C98ABE2784A35700F41A5D /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				C92D13952782E4750030A3B3 /* LocationRequestController.swift */,
+				C9FB968D2761FC5900178446 /* MapController.swift */,
+				C92D13932782DE480030A3B3 /* Extension.swift */,
+				C92D139B278319FC0030A3B3 /* SearchInputView.swift */,
+				C92D139D27831EAB0030A3B3 /* SearchCell.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		C9C98AC02784A38300F41A5D /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C9A2FC1E275E8CD4006EC903 /* ProfileVC.swift */,
+				C9199F42277C717D0079890F /* BlurExtension.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		E9E0B0D04C91491FD236BD45 /* Frameworks */ = {
@@ -234,12 +263,11 @@
 		EA1FE999276FE800005395CF /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
+				C9C98AC02784A38300F41A5D /* Profile */,
+				C9C98ABE2784A35700F41A5D /* Map */,
 				C94DB99F275D0BB800EABA56 /* ServiceTypeVC.swift */,
 				C94DB98F275D08C200EABA56 /* CitiesVC.swift */,
 				C94DB9B3275DEB1E00EABA56 /* TabVC.swift */,
-				C9A2FC1E275E8CD4006EC903 /* ProfileVC.swift */,
-				C9199F42277C717D0079890F /* BlurV.swift */,
-				C9FB968D2761FC5900178446 /* MapVC.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -398,18 +426,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9A2FC1F275E8CD4006EC903 /* ProfileVC.swift in Sources */,
+				C92D13962782E4750030A3B3 /* LocationRequestController.swift in Sources */,
 				C9EE8E8727666EE9006712E4 /* OrganDonationService.swift in Sources */,
 				C9A2FC29275F5840006EC903 /* AttendantModel.swift in Sources */,
 				C94DB9A8275D196F00EABA56 /* DonorsVC.swift in Sources */,
 				C9A2FC21275F0975006EC903 /* HospitalModel.swift in Sources */,
 				C9A2FC2D275F703F006EC903 /* NewAttendant.swift in Sources */,
 				C9EE8E83276650C1006712E4 /* OrganModel.swift in Sources */,
+				C92D13942782DE480030A3B3 /* Extension.swift in Sources */,
 				C94DB9AC275D2CD000EABA56 /* NewDonor.swift in Sources */,
 				C9EE8E7F2765DD41006712E4 /* AnimationViewController.swift in Sources */,
 				C9A2FC1D275E7E1E006EC903 /* DonoreCell.swift in Sources */,
 				C9A2FC23275F3C67006EC903 /* AttendantService.swift in Sources */,
 				C9A2FC31275F7B1F006EC903 /* UserModel.swift in Sources */,
 				C94DB9A4275D11CA00EABA56 /* AttendantVC.swift in Sources */,
+				C92D139C278319FC0030A3B3 /* SearchInputView.swift in Sources */,
 				C9EE8E8127662FBD006712E4 /* OrganDonationVC.swift in Sources */,
 				C9A2FC2B275F6F44006EC903 /* AttendantCell.swift in Sources */,
 				C9EE8E892766704F006712E4 /* OrganDonationCell.swift in Sources */,
@@ -420,13 +451,14 @@
 				C9A2FC372760ED7C006EC903 /* Color.swift in Sources */,
 				C9A2FC352760A04F006EC903 /* InformationVC.swift in Sources */,
 				C94DB9AA275D2C2800EABA56 /* DonorsModel.swift in Sources */,
-				C9FB968E2761FC5900178446 /* MapVC.swift in Sources */,
+				C9FB968E2761FC5900178446 /* MapController.swift in Sources */,
 				C9A2FC392760FE15006EC903 /* ViewController.swift in Sources */,
 				C94DB98C275D08C200EABA56 /* AppDelegate.swift in Sources */,
 				C9A2FC25275F40AE006EC903 /* HospitalVC.swift in Sources */,
 				C94DB98E275D08C200EABA56 /* SceneDelegate.swift in Sources */,
+				C92D139E27831EAB0030A3B3 /* SearchCell.swift in Sources */,
 				C94DB9A0275D0BB800EABA56 /* ServiceTypeVC.swift in Sources */,
-				C9199F43277C717D0079890F /* BlurV.swift in Sources */,
+				C9199F43277C717D0079890F /* BlurExtension.swift in Sources */,
 				C94DB9B6275E050B00EABA56 /* LogInVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

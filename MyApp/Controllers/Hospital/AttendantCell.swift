@@ -16,7 +16,7 @@ class AttendantCell: UICollectionViewCell, CNContactViewControllerDelegate {
     
     static let identifire = "AttendantCell"
     weak var delegate : CellDelegateA?
-//    var myTabelViewController : AttendantVC?
+
     fileprivate let application = UIApplication.shared
     
     public let nameLabel: UILabel = {

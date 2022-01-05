@@ -47,8 +47,8 @@ class LogInVC: UIViewController {
         return $0
     }(ViewController())
     lazy var bloodTypeTf : ViewController =  {
-//        $0.textFiled.text = "A+"
         $0.textFiled.placeholder = (NSLocalizedString("blood type", comment: "")).localized()
+        $0.icon.image   = UIImage(named: "bllo")
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(ViewController())
@@ -56,6 +56,7 @@ class LogInVC: UIViewController {
     lazy var genderTF : ViewController =  {
 //        $0.textFiled.text = "Female"
         $0.textFiled.placeholder = (NSLocalizedString("sd", comment: "")).localized()
+        $0.icon.image   = UIImage(named: "gr")
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(ViewController())
@@ -63,6 +64,7 @@ class LogInVC: UIViewController {
     lazy var phoneTF : ViewController =  {
 //        $0.textFiled.text = "+996342423"
         $0.textFiled.placeholder = (NSLocalizedString("Telephone number", comment: "")).localized()
+        $0.icon.image   = UIImage(named: "فون")
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(ViewController())
@@ -70,6 +72,7 @@ class LogInVC: UIViewController {
     lazy var idTF : ViewController =  {
 //        $0.textFiled.text = "4343423423423"
         $0.textFiled.placeholder = (NSLocalizedString("NDonor", comment: "")).localized()
+        $0.icon.image   = UIImage(named: "user")
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(ViewController())
@@ -77,6 +80,7 @@ class LogInVC: UIViewController {
     lazy var ageTF : ViewController =  {
 //        $0.textFiled.text = "25"
         $0.textFiled.placeholder = (NSLocalizedString("bd", comment: "")).localized()
+        $0.icon.image   = UIImage(named: "icons8-plus-1-day-50")
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(ViewController())
@@ -121,9 +125,9 @@ class LogInVC: UIViewController {
     
     func registerUI () {
         self.view.addSubview(stack)
-        self.stack.addArrangedSubview(passTf)
-        self.stack.addArrangedSubview(nameTF)
         self.stack.addArrangedSubview(emailTF)
+        self.stack.addArrangedSubview(nameTF)
+        self.stack.addArrangedSubview(passTf)
         self.stack.addArrangedSubview(bloodTypeTf)
         self.stack.addArrangedSubview(ageTF)
         self.stack.addArrangedSubview(genderTF)
@@ -131,17 +135,10 @@ class LogInVC: UIViewController {
         self.stack.addArrangedSubview(idTF)
         view.addSubview(registerBtn)
         view.addSubview(loginRegstSg)
-        view.addSubview(greenImage)
-        NSLayoutConstraint.activate([
-            greenImage.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40),
-            greenImage.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40),
-            greenImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
-            greenImage.widthAnchor.constraint(equalToConstant: 80),
-            greenImage.heightAnchor.constraint(equalToConstant: 200),
-        ])
+        greenImage.removeFromSuperview()
         NSLayoutConstraint.activate([
             loginRegstSg.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            loginRegstSg.topAnchor.constraint(equalTo: view.topAnchor, constant: 200),
+            loginRegstSg.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
             loginRegstSg.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7)
         ])
         NSLayoutConstraint.activate([
@@ -160,9 +157,9 @@ class LogInVC: UIViewController {
   
     func loginUI () {
         self.view.addSubview(stack)
-        self.stack.addArrangedSubview(passTf)
-        self.stack.addArrangedSubview(nameTF)
         self.stack.addArrangedSubview(emailTF)
+        self.stack.addArrangedSubview(nameTF)
+        self.stack.addArrangedSubview(passTf)
         self.stack.removeArrangedSubview(bloodTypeTf)
         self.stack.removeArrangedSubview(ageTF)
         self.stack.removeArrangedSubview(genderTF)
@@ -173,16 +170,10 @@ class LogInVC: UIViewController {
         genderTF.removeFromSuperview()
         phoneTF.removeFromSuperview()
         idTF.removeFromSuperview()
+        nameTF.removeFromSuperview()
         view.addSubview(registerBtn)
         view.addSubview(loginRegstSg)
-        view.addSubview(greenImage)
-        NSLayoutConstraint.activate([
-            greenImage.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40),
-            greenImage.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40),
-            greenImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
-            greenImage.widthAnchor.constraint(equalToConstant: 100),
-            greenImage.heightAnchor.constraint(equalToConstant: 350),
-        ])
+
         NSLayoutConstraint.activate([
             loginRegstSg.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             loginRegstSg.topAnchor.constraint(equalTo: view.topAnchor, constant: 300),
@@ -190,8 +181,8 @@ class LogInVC: UIViewController {
         ])
         NSLayoutConstraint.activate([
             self.stack.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            self.stack.topAnchor.constraint(equalTo: self.loginRegstSg.bottomAnchor, constant: 40),
-            self.stack.widthAnchor.constraint(equalTo: self.view.widthAnchor, constant: -100),
+            self.stack.topAnchor.constraint(equalTo: self.loginRegstSg.bottomAnchor, constant: 200),
+            self.stack.widthAnchor.constraint(equalTo: self.view.widthAnchor, constant: 100),
         ])
         NSLayoutConstraint.activate([
             registerBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
