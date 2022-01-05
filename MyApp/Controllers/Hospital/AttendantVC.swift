@@ -184,7 +184,7 @@ extension AttendantVC: UICollectionViewDelegate  , UICollectionViewDataSource, U
         let atendant = attendant[indexPath.row]
         
         cell.nameLabel.text = " الاسم:\(atendant.name)"
-        cell.ageLabel.text = "العمر:\(atendant.age)"
+        cell.ageLabel.text = "تاريخ الميلاد:\(atendant.age)"
         cell.idLabel.text = " الهويه الوطنيه:  \(atendant.id)"
         cell.numberLabel.text = "رقم الهاتف:  \(atendant.num)"
         cell.delegate = self
