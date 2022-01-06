@@ -25,9 +25,9 @@ class LocationRequestController: UIViewController {
     let allowLocation: UILabel = {
         let label = UILabel()
         
-        let attributedText = NSMutableAttributedString(string: "Allow Location" , attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 24)])
+        let attributedText = NSMutableAttributedString(string:(NSLocalizedString("ALLOW", comment: "")) , attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 24)])
         
-        attributedText.append(NSAttributedString(string: "please enable location service so that we can track you" , attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16)]))
+        attributedText.append(NSAttributedString(string:(NSLocalizedString("please enable location service", comment: "")) , attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16)]))
         
         label.numberOfLines = 0
         label.textAlignment = .center
@@ -36,7 +36,7 @@ class LocationRequestController: UIViewController {
     }()
     let enableLocationButton: UIButton = {
        let button = UIButton()
-       button.setTitle("Enable Location", for: .normal)
+       button.setTitle((NSLocalizedString("Enable Location", comment: "")), for: .normal)
        button.setTitleColor(.white, for: .normal)
        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
        button.backgroundColor = .mainBlue()

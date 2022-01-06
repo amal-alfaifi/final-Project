@@ -55,7 +55,7 @@ class LogInVC: UIViewController {
     
     lazy var genderTF : ViewController =  {
 //        $0.textFiled.text = "Female"
-        $0.textFiled.placeholder = (NSLocalizedString("sd", comment: "")).localized()
+        $0.textFiled.placeholder = (NSLocalizedString("gen", comment: "")).localized()
         $0.icon.image   = UIImage(named: "gr")
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
@@ -63,7 +63,7 @@ class LogInVC: UIViewController {
     
     lazy var phoneTF : ViewController =  {
 //        $0.textFiled.text = "+996342423"
-        $0.textFiled.placeholder = (NSLocalizedString("Telephone number", comment: "")).localized()
+        $0.textFiled.placeholder = (NSLocalizedString("phN", comment: "")).localized()
         $0.icon.image   = UIImage(named: "فون")
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
@@ -71,7 +71,7 @@ class LogInVC: UIViewController {
     
     lazy var idTF : ViewController =  {
 //        $0.textFiled.text = "4343423423423"
-        $0.textFiled.placeholder = (NSLocalizedString("NDonor", comment: "")).localized()
+        $0.textFiled.placeholder = (NSLocalizedString("blood type", comment: "")).localized()
         $0.icon.image   = UIImage(named: "user")
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
@@ -79,7 +79,7 @@ class LogInVC: UIViewController {
     
     lazy var ageTF : ViewController =  {
 //        $0.textFiled.text = "25"
-        $0.textFiled.placeholder = (NSLocalizedString("bd", comment: "")).localized()
+        $0.textFiled.placeholder = (NSLocalizedString("Date of Birth", comment: "")).localized()
         $0.icon.image   = UIImage(named: "icons8-plus-1-day-50")
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0

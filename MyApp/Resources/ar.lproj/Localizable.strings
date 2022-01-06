@@ -118,3 +118,11 @@
 "City" = "المحافظه";
 "lo" = "الخريطة";
 "E" = "إخفاء الصورة الشخصية";
+"gen" = "الجنس";
+"phN" = "رقم الهاتف ";
+"blood type" = "فصيلة الدم";
+"Date of Birth" = "تاريخ الميلاد";
+"ALLOW" = "Allow location";
+"please enable location service" = "السماح بالوصول الى موقعك";
+"Search for a place or address" = "البحث عن موقع";
+"Enable Location" = "تمكين الموقع";

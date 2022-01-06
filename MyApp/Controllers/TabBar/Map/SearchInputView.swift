@@ -122,7 +122,7 @@ class SearchInputView: UIView {
     }
     func configureSearchBar() {
         searchBar = UISearchBar()
-        searchBar.placeholder = "Search for a place or address"
+        searchBar.placeholder = (NSLocalizedString("Search for a place or address", comment: ""))
         searchBar.barStyle = .black
         searchBar.delegate = self
         searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)

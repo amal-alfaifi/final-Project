@@ -95,7 +95,7 @@ class ProfileVC: UIViewController {
         l.translatesAutoresizingMaskIntoConstraints = false
         l.textAlignment = .right
         l.textColor = UIColor(red: (76/255), green: (133/255), blue: (104/255), alpha: 1)
-        l.text = (NSLocalizedString("رقم الهاتف", comment: ""))
+        l.text = (NSLocalizedString("phN", comment: ""))
         return l
     }()
     lazy var bloodType: UILabel = {
@@ -109,7 +109,7 @@ class ProfileVC: UIViewController {
         l.translatesAutoresizingMaskIntoConstraints = false
         l.textAlignment = .right
         l.textColor = UIColor(red: (76/255), green: (133/255), blue: (104/255), alpha: 1)
-        l.text = (NSLocalizedString("فصيلة الدم", comment: ""))
+        l.text = (NSLocalizedString("blood type", comment: ""))
         return l
     }()
     lazy var Age: UILabel = {
@@ -124,7 +124,7 @@ class ProfileVC: UIViewController {
         l.translatesAutoresizingMaskIntoConstraints = false
         l.textAlignment = .right
         l.textColor = UIColor(red: (76/255), green: (133/255), blue: (104/255), alpha: 1)
-        l.text = (NSLocalizedString("تاريخ الميلاد", comment: ""))
+        l.text = (NSLocalizedString("Date of Birth", comment: ""))
         return l
     }()
     lazy var id: UILabel = {
@@ -144,7 +144,7 @@ class ProfileVC: UIViewController {
         let l = UILabel()
         l.translatesAutoresizingMaskIntoConstraints = false
         l.textColor = UIColor(red: (76/255), green: (133/255), blue: (104/255), alpha: 1)
-        l.text = (NSLocalizedString("الجنس", comment: ""))
+        l.text = (NSLocalizedString("gen", comment: ""))
         l.textAlignment = .right
         return l
     }()
@@ -370,7 +370,7 @@ class ProfileVC: UIViewController {
         view.addSubview(Agelabel)
         NSLayoutConstraint.activate([
             Agelabel.topAnchor.constraint(equalTo: Gender.bottomAnchor, constant: 30),
-            Agelabel.leftAnchor.constraint(equalTo: greenImage.rightAnchor, constant: -90),
+            Agelabel.leftAnchor.constraint(equalTo: greenImage.rightAnchor, constant: -100),
         ])
         view.addSubview(Age)
         NSLayoutConstraint.activate([
@@ -452,17 +452,16 @@ class ProfileVC: UIViewController {
             signOutButton.heightAnchor.constraint(equalToConstant: 50),
         ])
     }
-    @objc func change() {
+    @objc func change(_ sender: Any) {
         guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
             return
         }
         if UIApplication.shared.canOpenURL(settingsUrl) {
             UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                print("Settings opened: \(success)")
+                print("Settings opened: \(success)") // Prints true
             })
         }
     }
-    
     @objc func signOutButtonTapped() {
         let firebaseAuth = Auth.auth()
         do {
