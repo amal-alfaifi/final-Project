@@ -25,6 +25,7 @@ class LogInVC: UIViewController {
         $0.textFiled.text = "Amal".localized()
         $0.textFiled.placeholder = (NSLocalizedString("name1", comment: "")).localized()
         $0.icon.image   = UIImage(named: "user")
+        $0.textFiled.font = UIFont(name: "", size: 15)
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(ViewController())
@@ -33,6 +34,7 @@ class LogInVC: UIViewController {
         $0.textFiled.text = "Amal@gmail.net"
         $0.textFiled.placeholder = (NSLocalizedString("email", comment: "")).localized()
         $0.icon.image   = UIImage(named: "email")
+        $0.textFiled.font = UIFont(name: "", size: 15)
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(ViewController())
@@ -42,6 +44,7 @@ class LogInVC: UIViewController {
         $0.textFiled.placeholder = (NSLocalizedString("password", comment: "")).localized()
         $0.textFiled.textAlignment = .center
         $0.icon.image   = UIImage(named: "password")
+        $0.textFiled.font = UIFont(name: "", size: 15)
         $0.textFiled.translatesAutoresizingMaskIntoConstraints = false
         $0.textFiled.isSecureTextEntry = true
         return $0
@@ -49,6 +52,7 @@ class LogInVC: UIViewController {
     lazy var bloodTypeTf : ViewController =  {
         $0.textFiled.placeholder = (NSLocalizedString("blood type", comment: "")).localized()
         $0.icon.image   = UIImage(named: "bllo")
+        $0.textFiled.font = UIFont(name: "", size: 15)
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(ViewController())
@@ -57,6 +61,7 @@ class LogInVC: UIViewController {
 //        $0.textFiled.text = "Female"
         $0.textFiled.placeholder = (NSLocalizedString("gen", comment: "")).localized()
         $0.icon.image   = UIImage(named: "gr")
+        $0.textFiled.font = UIFont(name: "", size: 15)
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(ViewController())
@@ -65,14 +70,15 @@ class LogInVC: UIViewController {
 //        $0.textFiled.text = "+996342423"
         $0.textFiled.placeholder = (NSLocalizedString("phN", comment: "")).localized()
         $0.icon.image   = UIImage(named: "فون")
+        $0.textFiled.font = UIFont(name: "", size: 15)
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(ViewController())
     
     lazy var idTF : ViewController =  {
-//        $0.textFiled.text = "4343423423423"
-        $0.textFiled.placeholder = (NSLocalizedString("blood type", comment: "")).localized()
+        $0.textFiled.placeholder = (NSLocalizedString("vn", comment: "")).localized()
         $0.icon.image   = UIImage(named: "user")
+        $0.textFiled.font = UIFont(name: "", size: 15)
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(ViewController())
@@ -81,6 +87,7 @@ class LogInVC: UIViewController {
 //        $0.textFiled.text = "25"
         $0.textFiled.placeholder = (NSLocalizedString("Date of Birth", comment: "")).localized()
         $0.icon.image   = UIImage(named: "icons8-plus-1-day-50")
+        $0.textFiled.font = UIFont(name: "", size: 15)
         $0.translatesAutoresizingMaskIntoConstraints = false
         return $0
     }(ViewController())

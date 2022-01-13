@@ -213,7 +213,7 @@ extension DonorsVC: UICollectionViewDelegate  , UICollectionViewDataSource, UICo
         if searchText.isEmpty {
             let temp = donors
             donors = temp
-            DonorsService.shared.listenToDonors { newdonor in
+            DonorsService.shared.listenToDonors{ newdonor in
                 self.donors = newdonor
                 self.donorsCV.reloadData()
             }
