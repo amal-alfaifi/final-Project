@@ -209,25 +209,52 @@ extension DonorsVC: UICollectionViewDelegate  , UICollectionViewDataSource, UICo
         self.navigationController?.pushViewController(unkvc, animated: true)
     }
     // البحث بفصيلة الدم
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        if searchText.isEmpty {
+//            let temp = donors
+//            donors = temp
+//            DonorsService.shared.listenToDonors{ newdonor in
+//                self.donors = newdonor
+//                self.donorsCV.reloadData()
+//            }
+//        } else {
+//            donors = donors.filter({ oneAttendant in
+//                return oneAttendant.bloodType.starts(with: searchText)
+//            })
+//            donorsCV.reloadData()
+//        }
+//    }
+//}
+//func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+//    searchBar.resignFirstResponder()
+//}
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.isEmpty {
-            let temp = donors
-            donors = temp
-            DonorsService.shared.listenToDonors{ newdonor in
-                self.donors = newdonor
-                self.donorsCV.reloadData()
+                if searchText.isEmpty {
+                    let temp = donors
+                    donors = temp
+
+                    DonorsService.shared.listenToDonors{ NewDonor in
+                        self.donors = NewDonor
+                        self.donorsCV.reloadData()
+                    }
+
+                } else {
+
+                    donors = donors.filter({ oneDonor in
+                        return oneDonor.bloodType.starts(with: searchText)
+                    })
+                }
+                donorsCV.reloadData()
+
             }
-        } else {
-            donors = donors.filter({ oneAttendant in
-                return oneAttendant.bloodType.starts(with: searchText)
-            })
-            donorsCV.reloadData()
+
         }
-    }
-}
-func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-    searchBar.resignFirstResponder()
-}
+
+        func searchBarCancelButtonCliced(_ searchBar: UISearchBar) {
+            searchBar.resignFirstResponder()
+
+        }
+
 //
 extension DonorsVC : CellDelegate {
     func didTapButton(cell: DonorsCell, didTappedThe button: UIButton?) {
