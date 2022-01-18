@@ -126,3 +126,20 @@
 "please enable location service" = "السماح بالوصول الى موقعك";
 "Search for a place or address" = "البحث عن موقع";
 "Enable Location" = "تمكين الموقع";
+"Error" = "خطأ";
+"Email is Used By Some One Else" = "الايميل مستخدم من قبل شخص آخر";
+"Ok" = "حسناً";
+"User Not Found Please Sign Up" = "المستخدم غير موجود الرجاء التسجيل";
+
+"Change UserName" = "تغيير اسم المستخدم";
+"Cancel" = "الغاء";
+"Change Age" = "تغيير تاريخ الميلاد";
+"Change BloodType" = "تغيير فصيلة الدم";
+"Change Gender" = "تغيير الجنس";
+"Change Phone" = "تغيير الرقم";
+
+"Edit" = "تعديل";
+"Ubdate" = "تحديث";
+"ubdate your information" = "تحديث معلوماتك";
+"Delete" = "حذف";
+"Delete Information" = "حذف معلوماتك";

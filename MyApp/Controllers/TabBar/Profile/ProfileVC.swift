@@ -190,9 +190,8 @@ class ProfileVC: UIViewController {
         }
     }
     @objc func changeUserName () {
-        print("OK")
-        let alert = UIAlertController(title: "Change UserName", message: "", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Ok", style: .default) { action in
+        let alert = UIAlertController(title: (NSLocalizedString("Change UserName", comment: "")), message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: (NSLocalizedString("Ok", comment: "")), style: .default) { action in
             let name =  alert.textFields?[0].text
             self.userNameLabel.text = name
             guard let currentUserID = Auth.auth().currentUser?.uid else {return}
@@ -200,7 +199,7 @@ class ProfileVC: UIViewController {
                 "name" : self.userNameLabel.text,
                 "id" : currentUserID])
         }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancel = UIAlertAction(title: (NSLocalizedString("Cancel", comment: "")), style: .cancel, handler: nil)
         alert.addTextField { field in
             field.text = self.userNameLabel.text
         }
@@ -210,8 +209,8 @@ class ProfileVC: UIViewController {
     }
     @objc func changeAge () {
         print("OK")
-        let alert = UIAlertController(title: "Change Age", message: "", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Ok", style: .default) { action in
+        let alert = UIAlertController(title:(NSLocalizedString("Change Age", comment: "")), message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: (NSLocalizedString("Ok", comment: "")), style: .default) { action in
             let name =  alert.textFields?[0].text
             self.Age.text = name
             guard let currentUserID = Auth.auth().currentUser?.uid else {return}
@@ -219,7 +218,7 @@ class ProfileVC: UIViewController {
                 "age" : self.Age.text,
                 "id" : currentUserID])
         }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancel = UIAlertAction(title: (NSLocalizedString("Cancel", comment: "")), style: .cancel, handler: nil)
         alert.addTextField { field in
             field.text = self.Age.text
         }
@@ -229,8 +228,8 @@ class ProfileVC: UIViewController {
     }
     @objc func changeBloodType () {
         print("OK")
-        let alert = UIAlertController(title: "Change BloodType", message: "", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Ok", style: .default) { action in
+        let alert = UIAlertController(title: (NSLocalizedString("Change BloodType", comment: "")), message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: (NSLocalizedString("Ok", comment: "")), style: .default) { action in
             let name =  alert.textFields?[0].text
             self.bloodType.text = name
             guard let currentUserID = Auth.auth().currentUser?.uid else {return}
@@ -238,7 +237,7 @@ class ProfileVC: UIViewController {
                 "bloodType" : self.bloodType.text,
                 "id" : currentUserID])
         }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancel = UIAlertAction(title: (NSLocalizedString("Cancel", comment: "")), style: .cancel, handler: nil)
         alert.addTextField { field in
             field.text = self.bloodType.text
         }
@@ -248,8 +247,8 @@ class ProfileVC: UIViewController {
     }
     @objc func changeGender () {
         print("OK")
-        let alert = UIAlertController(title: "Change Gender", message: "", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Ok", style: .default) { action in
+        let alert = UIAlertController(title: (NSLocalizedString("Change Gender", comment: "")), message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: (NSLocalizedString("Ok", comment: "")), style: .default) { action in
             let name =  alert.textFields?[0].text
             self.Gender.text = name
             guard let currentUserID = Auth.auth().currentUser?.uid else {return}
@@ -257,7 +256,7 @@ class ProfileVC: UIViewController {
                 "gender" : self.Gender.text,
                 "id" : currentUserID])
         }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancel = UIAlertAction(title: (NSLocalizedString("Cancel", comment: "")), style: .cancel, handler: nil)
         alert.addTextField { field in
             field.text = self.Gender.text
         }
@@ -266,9 +265,9 @@ class ProfileVC: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     @objc func changePhone () {
-        print("OK")
-        let alert = UIAlertController(title: "Change Phone", message: "", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Ok", style: .default) { action in
+
+        let alert = UIAlertController(title:(NSLocalizedString("Change Phone", comment: "")), message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: (NSLocalizedString("Ok", comment: "")), style: .default) { action in
             let name =  alert.textFields?[0].text
             self.phone.text = name
             guard let currentUserID = Auth.auth().currentUser?.uid else {return}
@@ -276,7 +275,7 @@ class ProfileVC: UIViewController {
                 "phone" : self.phone.text,
                 "id" : currentUserID])
         }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancel = UIAlertAction(title:(NSLocalizedString("Cancel", comment: "")), style: .cancel, handler: nil)
         alert.addTextField { field in
             field.text = self.phone.text
         }

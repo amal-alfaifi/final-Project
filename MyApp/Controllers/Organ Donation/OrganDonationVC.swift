@@ -61,12 +61,12 @@ extension OrganDonationVC: UICollectionViewDelegate  , UICollectionViewDataSourc
         let identifier = "\(String(describing: index))" as NSString
         return UIContextMenuConfiguration( identifier: identifier, previewProvider: nil) { _ in
             let editAction = UIAction(
-                title: "Edit",
+                title: NSLocalizedString("Edit", comment: ""),
                 image: UIImage(systemName: "square.and.arrow.up")) { _ in
                     let orgDonation = self.organ[indexPath.row]
                     
-                    let alertController = UIAlertController(title:"Ubdate", message:"ubdate your information", preferredStyle:.alert)
-                    let updateAction = UIAlertAction(title: "Update", style:.default){(_) in
+                    let alertController = UIAlertController(title:(NSLocalizedString("Ubdate", comment: "")), message:(NSLocalizedString("ubdate your information", comment: "")), preferredStyle:.alert)
+                    let updateAction = UIAlertAction(title: (NSLocalizedString("Ubdate", comment: "")), style:.default){(_) in
                         let token = UserDefaults.standard.string(forKey: "token")
                         let id = orgDonation.id
                         let name =  alertController.textFields?[0].text
@@ -88,31 +88,21 @@ extension OrganDonationVC: UICollectionViewDelegate  , UICollectionViewDataSourc
                     let token = UserDefaults.standard.string(forKey: "token")
                     if token == orgDonation.userID {
                         self.present (alertController, animated:true, completion: nil)
-                    } else {
-                        let alert = UIAlertController(title: "Not Your Data", message: "Can't Edit", preferredStyle: .alert)
-                        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-                        alert.addAction(action)
-                        self.present (alert, animated:true, completion: nil)
                     }
                 }
             let deleteAction = UIAction(
-                title: "Delete",
+                title: NSLocalizedString("Delete", comment: ""),
                 image: UIImage(systemName: "trash"), attributes: .destructive) { _ in
                     let orgDonation = self.organ[indexPath.row]
-                    let alertController = UIAlertController(title:"Delete", message:"Delete Information", preferredStyle:.alert)
-                    let deleteAction = UIAlertAction(title: "Delete", style:.default){(_) in
+                    let alertController = UIAlertController(title: (NSLocalizedString("Delete", comment: "")), message:(NSLocalizedString("Delete Information", comment: "")), preferredStyle:.alert)
+                    let deleteAction = UIAlertAction(title: (NSLocalizedString("Delete", comment: "")), style:.default){(_) in
                         OrganDonationService.shared.deletevolunteer(volunteerId: orgDonation.id)
                     }
                     alertController.addAction (deleteAction)
                     let token = UserDefaults.standard.string(forKey: "token")
                     if token == orgDonation.userID {
                         self.present (alertController, animated:true, completion: nil)
-                    } else {
-                        let alert = UIAlertController(title: "Not Your Data", message: "Can't Edit", preferredStyle: .alert)
-                        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-                        alert.addAction(action)
-                        self.present (alert, animated:true, completion: nil)
-                    }
+                    } 
                 }
             return UIMenu(title: "", image: nil, children: [editAction, deleteAction])
         }

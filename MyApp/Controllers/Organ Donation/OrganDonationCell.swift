@@ -17,6 +17,7 @@ class OrganDonationCell: UICollectionViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
         label.textColor = .black
+        label.textAlignment = .right
         label.font = UIFont(name: "Avenir-Light", size: 20)
         return label
     }()
@@ -25,6 +26,7 @@ class OrganDonationCell: UICollectionViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         label.textColor = .black
+        label.textAlignment = .right
         label.font = UIFont(name: "Avenir-Light", size: 18)
         return label
     }()
@@ -33,6 +35,7 @@ class OrganDonationCell: UICollectionViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         label.textColor = .black
+        label.textAlignment = .right
         label.font = UIFont(name: "Avenir-Light", size: 18)
         return label
     }()
@@ -41,6 +44,7 @@ class OrganDonationCell: UICollectionViewCell {
         label.text = "a"
         label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         label.textColor = .black
+        label.textAlignment = .right
         label.font = UIFont(name: "Avenir-Light", size: 18)
         return label
     }()

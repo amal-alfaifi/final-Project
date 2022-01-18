@@ -116,3 +116,19 @@ Blood of this type can be donated to anyone with blood type B positive or AB pos
 "please enable location service" = "please enable location service";
 "Search for a place or address" = "Search for a place or address";
 "Enable Location" = "Enable Location";
+"Error" = "Error";
+"Email is Used By Some One Else" ; "Email is Used By Some One Else";
+"Ok" = "Ok";
+"User Not Found Please Sign Up" = "User Not Found Please Sign Up";
+"Change UserName" = "Change UserName";
+"Cancel" = "Cancel";
+"Change Age" = "Change Age";
+"Change BloodType" = "Change BloodType";
+"Change Gender" = "Change Gender";
+"Change Phone" = "Change Phone";
+
+"Ubdate" = "Ubdate";
+"ubdate your information" = "ubdate your information";
+"Delete" = "Delete";
+"Delete Information" = "Delete Information";
+"Edit" = "Edit";

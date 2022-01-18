@@ -25,6 +25,7 @@ class DonorsVC : UIViewController, CNContactViewControllerDelegate {
         s.delegate = self
         return s
     }()
+
     
     lazy var donorsCV: UICollectionView = {
         var donorsCV = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout.init())
@@ -90,6 +91,7 @@ class DonorsVC : UIViewController, CNContactViewControllerDelegate {
             AddDonorButton.widthAnchor.constraint(equalToConstant: 400),
             AddDonorButton.heightAnchor.constraint(equalToConstant: 60),
         ])
+
         
     }
     
@@ -116,12 +118,12 @@ extension DonorsVC: UICollectionViewDelegate  , UICollectionViewDataSource, UICo
         let identifier = "\(String(describing: index))" as NSString
         return UIContextMenuConfiguration( identifier: identifier, previewProvider: nil) { _ in
             let editAction = UIAction(
-                title: "Edit",
+                title: NSLocalizedString("Edit", comment: ""),
                 image: UIImage(systemName: "square.and.arrow.up")) { _ in
                     let donorss = self.donors[indexPath.row]
                     
-                    let alertController = UIAlertController(title:"Ubdate", message:"ubdate your information", preferredStyle:.alert)
-                    let updateAction = UIAlertAction(title: "Update", style:.default){(_) in
+                    let alertController = UIAlertController(title:(NSLocalizedString("Ubdate", comment: "")), message:(NSLocalizedString("ubdate your information", comment: "")), preferredStyle:.alert)
+                    let updateAction = UIAlertAction(title: (NSLocalizedString("Ubdate", comment: "")), style:.default){(_) in
                         let token = UserDefaults.standard.string(forKey: "token")
 
                         let id = donorss.id
@@ -153,31 +155,21 @@ extension DonorsVC: UICollectionViewDelegate  , UICollectionViewDataSource, UICo
                     let token = UserDefaults.standard.string(forKey: "token")
                     if token == donorss.userID {
                         self.present (alertController, animated:true, completion: nil)
-                    } else {
-                        let alert = UIAlertController(title: "Not Your Data", message: "Can't Edit", preferredStyle: .alert)
-                        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-                        alert.addAction(action)
-                        self.present (alert, animated:true, completion: nil)
                     }
                 }
             let deleteAction = UIAction(
-                title: "Delete",
+                title: (NSLocalizedString("Delete", comment: "")),
                 image: UIImage(systemName: "trash"), attributes: .destructive) { _ in
                     let donorss = self.donors[indexPath.row]
-                    let alertController = UIAlertController(title:"Delete", message:"Delete Information", preferredStyle:.alert)
-                    let deleteAction = UIAlertAction(title: "Delete", style:.default){(_) in
+                    let alertController = UIAlertController(title:(NSLocalizedString("Delete", comment: "")), message:(NSLocalizedString("Delete Information", comment: "")), preferredStyle:.alert)
+                    let deleteAction = UIAlertAction(title: (NSLocalizedString("Delete", comment: "")), style:.default){(_) in
                         DonorsService.shared.deleteDonor(donorId: donorss.id)
                     }
                     alertController.addAction (deleteAction)
                     let token = UserDefaults.standard.string(forKey: "token")
                     if token == donorss.userID {
                         self.present (alertController, animated:true, completion: nil)
-                    } else {
-                        let alert = UIAlertController(title: "Not Your Data", message: "Can't Edit", preferredStyle: .alert)
-                        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-                        alert.addAction(action)
-                        self.present (alert, animated:true, completion: nil)
-                    }
+                    } 
                 }
             return UIMenu(title: "", image: nil, children: [editAction, deleteAction])
         }
@@ -185,10 +177,10 @@ extension DonorsVC: UICollectionViewDelegate  , UICollectionViewDataSource, UICo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! DonorsCell
         let donorss = donors[indexPath.row]
-        cell.nameLabel.text = "الاسم: \(donorss.name)"
-        cell.idLabel.text = "الهوية الوطنية: \(donorss.id)"
-        cell.numberLabel.text = "رقم الهاتف: \(donorss.num)"
-        cell.bloodLabel.text = "فصيلة الدم : \(donorss.bloodType)"
+        cell.nameLabel.text = " الاسم :\(donorss.name)"
+        cell.idLabel.text = " الهوية الوطنية : \(donorss.id)"
+        cell.numberLabel.text = " رقم الهاتف : \(donorss.num)"
+        cell.bloodLabel.text = " فصيلة الدم : \(donorss.bloodType)"
         cell.delegate = self
         return cell
     }
@@ -209,25 +201,6 @@ extension DonorsVC: UICollectionViewDelegate  , UICollectionViewDataSource, UICo
         self.navigationController?.pushViewController(unkvc, animated: true)
     }
     // البحث بفصيلة الدم
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        if searchText.isEmpty {
-//            let temp = donors
-//            donors = temp
-//            DonorsService.shared.listenToDonors{ newdonor in
-//                self.donors = newdonor
-//                self.donorsCV.reloadData()
-//            }
-//        } else {
-//            donors = donors.filter({ oneAttendant in
-//                return oneAttendant.bloodType.starts(with: searchText)
-//            })
-//            donorsCV.reloadData()
-//        }
-//    }
-//}
-//func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//    searchBar.resignFirstResponder()
-//}
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
                 if searchText.isEmpty {
                     let temp = donors
@@ -237,25 +210,17 @@ extension DonorsVC: UICollectionViewDelegate  , UICollectionViewDataSource, UICo
                         self.donors = NewDonor
                         self.donorsCV.reloadData()
                     }
-
                 } else {
-
                     donors = donors.filter({ oneDonor in
                         return oneDonor.bloodType.starts(with: searchText)
                     })
                 }
                 donorsCV.reloadData()
-
             }
-
         }
-
         func searchBarCancelButtonCliced(_ searchBar: UISearchBar) {
             searchBar.resignFirstResponder()
-
         }
-
-//
 extension DonorsVC : CellDelegate {
     func didTapButton(cell: DonorsCell, didTappedThe button: UIButton?) {
         guard let indexPath = donorsCV.indexPath(for: cell) else {return}
