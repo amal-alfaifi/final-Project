@@ -57,6 +57,7 @@ extension OrganDonationVC: UICollectionViewDelegate  , UICollectionViewDataSourc
         return organ.count
     }
     
+    //MARK: - contextMenuConfigurationForItemAt
     func collectionView( _ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         let identifier = "\(String(describing: index))" as NSString
         return UIContextMenuConfiguration( identifier: identifier, previewProvider: nil) { _ in

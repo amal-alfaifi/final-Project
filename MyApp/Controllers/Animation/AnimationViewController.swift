@@ -30,6 +30,7 @@ class AnimationViewController: UIViewController {
     animationView.play()
     view.addSubview(animationView)
   }
+    
     func handleAnimation() {
         let token = UserDefaults.standard.string(forKey: "token")
         do {

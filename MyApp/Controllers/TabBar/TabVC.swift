@@ -32,6 +32,7 @@ class TabVC: UITabBarController {
     super.viewDidLoad()
       tabBar.layer.borderColor = UIColor.systemGray.cgColor
       tabBar.layer.borderWidth = 0.5
+      tabBar.barTintColor = .black
       tabBar.backgroundColor = .white
       tabBar.tintColor = .label
       setupVCs()

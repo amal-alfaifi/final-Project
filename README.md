@@ -76,3 +76,6 @@ auth.logout()
 - Donors Model 
 - Attendant Model
 - Organ Model
+
+## Slides
+https://docs.google.com/presentation/d/1M0l6SW9pCZ6LXsPcNfq938J2wCylFzR_VskfRglYTRo/edit#slide=id.g108d1318d08_2_102

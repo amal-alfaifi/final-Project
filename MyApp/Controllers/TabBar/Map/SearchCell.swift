@@ -18,6 +18,7 @@ class SearchCell: UITableViewCell {
     
     var delegate: SearchCellDelegate?
 
+    //  MKMapItemنقطة اهتمام على الخريطة.
     var mapItem: MKMapItem? {
        didSet {
            configureCell()
@@ -53,18 +54,7 @@ class SearchCell: UITableViewCell {
         label.textColor = .lightGray
         return label
     }()
-//    lazy var directionsButton: UIButton = {
-//        let button = UIButton (type: .system)
-//        button.titleLabel?.font = UIFont.boldSystemFont (ofSize: 18)
-//        button.setTitle("Go", for: .normal)
-//        button.backgroundColor = .directionsGreen()
-//        button.setTitleColor(.white, for: .normal)
-//        button.addTarget(self, action: #selector(handleGetDirections), for: .touchUpInside)
-//        button.layer.cornerRadius = 5
-//        button.alpha = 0
-//        return button
-//    }()
-    
+
     // MARK: - Init
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -118,7 +108,7 @@ class SearchCell: UITableViewCell {
     func configureCell() {
         locationTitleLabel.text = mapItem?.name
         
-        let distanceFormatter = MKDistanceFormatter()
+        let distanceFormatter = MKDistanceFormatter() // عندما تحتاج إلى عرض المسافات للمستخدم
         distanceFormatter.unitStyle = .abbreviated
         guard let mapItemLocation = mapItem?.placemark.location else { return }
         guard let distanceFromUser = delegate?.distanceFromUser(location: mapItemLocation) else { return }

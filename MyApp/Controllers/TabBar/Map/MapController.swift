@@ -14,6 +14,7 @@ class MapController: UIViewController {
     var mapView: MKMapView!
     var locationManager: CLLocationManager!
     var searchInputView: SearchInputView!
+    // يحدد المسار
     var route: MKRoute?
     
     let centerMapButton: UIButton = {
@@ -27,6 +28,7 @@ class MapController: UIViewController {
         configureViewComponents()
         enableLocationServices()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         centerMapOnUserLocation(shouldLoadAnnotations: true)
@@ -195,9 +197,12 @@ extension MapController {
     }
     
     func centerMapOnUserLocation(shouldLoadAnnotations: Bool) {
+        //coordinate يحدد معلومات الاحداثيات الجغرافيه
         guard let coordinates = locationManager.location?.coordinate else {
             return }
+        // MKCoordinateRegion منطقه جغرافيه تحدد الطول والعرض
         let coordinateRegion = MKCoordinateRegion(center: coordinates, latitudinalMeters: 2000, longitudinalMeters: 2000)
+        //  coordinateRegion يغير المنطقة المرئية حاليًا وينشط التغيير اختياريًا.
         mapView.setRegion(coordinateRegion, animated: true)
         
         if shouldLoadAnnotations{
@@ -251,6 +256,7 @@ extension MapController {
 
 //MARK: - CLLocationManagerDelegate
 
+//استخدام الموقع الحالي لتحديث موقع المستخدم على الخريطة
 extension MapController: CLLocationManagerDelegate {
     
     func enableLocationServices() {

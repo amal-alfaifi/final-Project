@@ -56,6 +56,7 @@ class SearchInputView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //طريقه السحب للاعلى والاسفل
     @objc func handleSwipeGesture(sender: UISwipeGestureRecognizer) {
         if sender.direction == .up {
             if expansionState == .NotExpanded {
@@ -94,6 +95,7 @@ class SearchInputView: UIView {
     
     // MARK: - Helper function
     
+    //
     func dismissOnSearch() {
         searchBar.showsCancelButton = false
         searchBar.endEditing(true)
@@ -120,6 +122,7 @@ class SearchInputView: UIView {
         configureTableView()
         configureGestureRecognizers()
     }
+    //البحث
     func configureSearchBar() {
         searchBar = UISearchBar()
         searchBar.placeholder = (NSLocalizedString("Search for a place or address", comment: ""))
@@ -130,6 +133,7 @@ class SearchInputView: UIView {
         addSubview(searchBar)
         searchBar.anchor(top: indicatorView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 4, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 0, height: 50)
     }
+    //table view
     
     func configureTableView() {
         tableView = UITableView()
@@ -141,7 +145,7 @@ class SearchInputView: UIView {
         addSubview(tableView)
         tableView.anchor(top: searchBar.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 8, paddingLeft: 0, paddingBottom: 100, paddingRight: 0, width: 0, height: 0)
     }
-    
+    //swipe down and up
     func configureGestureRecognizers() {
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture))
         swipeUp.direction = .up

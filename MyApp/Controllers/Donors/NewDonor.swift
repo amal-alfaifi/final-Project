@@ -231,6 +231,7 @@ class NewDonor: UIViewController, UITextFieldDelegate {
         let id = mtbr3IdTF.text ?? ""
         let num = mtbr3NumTF.text ?? ""
         let bloodType = bloodTF.text ?? ""
+        // UserDefaults
         let token = UserDefaults.standard.string(forKey: "token")
 
         DonorsService.shared.addDonor(doners: DonorsModel(name: name, id: id, bloodType:bloodType , num: num, userID: token!))

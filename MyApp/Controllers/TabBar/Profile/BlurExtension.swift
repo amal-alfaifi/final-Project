@@ -16,6 +16,7 @@ extension UIView {
          } else {
             blurEffect = UIBlurEffect(style: .light)
         }
+        // class UIVisualEffectView
         let blurredEffectView = UIVisualEffectView(effect: blurEffect)
         blurredEffectView.frame = self.bounds
         blurredEffectView.alpha = 0.8

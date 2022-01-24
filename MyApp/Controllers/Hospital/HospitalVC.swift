@@ -85,10 +85,14 @@ extension HospitalVC : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
+    
+    //MARK: - willSelectRowAt
+    //المستخدم يحدد صف
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         passedHospital = hospital[indexPath.row].id
         return indexPath
     }
+    //
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row) 
         let vc = AttendantVC()
